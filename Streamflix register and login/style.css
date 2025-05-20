@@ -110,3 +110,30 @@ button:hover {
 .link a:hover {
     text-decoration: underline;
 }
+
+/*kraje*/
+.select-country {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.select-country select {
+  width: 100%;
+  padding: 10px 40px 10px 10px;
+  font-size: 16px;
+  background-color: rgb(65,40,124);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  appearance: none;
+}
+
+.select-country .flag {
+  position: absolute;
+  right: 15px;
+  font-size: 20px;
+  pointer-events: none;
+  user-select: none;
+}

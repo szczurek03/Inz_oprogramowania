@@ -28,6 +28,19 @@
                 <label for="confirmPassword" data-i18n="confirmPassword">Potwierdź hasło</label>
                 <input type="password" id="confirmPassword" name="confirmPassword" required />
 
+                <label for="country" data-i18n="country">Kraj</label>
+
+                <div class="select-country">
+                    <select id="country" name="country" required>
+                        <option value="pl" data-flag="PL">Polska</option>
+                        <option value="us" data-flag="US">USA</option>
+                        <option value="de" data-flag="DE">Germany</option>
+                        <option value="fr" data-flag="FR">France</option>
+                        <option value="gb" data-flag="UK">United Kingdom</option>
+                    </select>
+                    <span class="flag" id="flagDisplay">PL</span>
+                </div>
+
                 <button type="submit" data-i18n="registerButton">Zarejestruj się</button>
                 <p class="link" data-i18n="toLogin">Masz już konto? <a href="login.html">Zaloguj się</a></p>
             </form>
