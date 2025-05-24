@@ -3,10 +3,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const registerForm = document.getElementById("registerForm");
     const languageSelect = document.getElementById("language");
 
+console.log("Skrypt załadowany");
+
     const translations = {
         pl: {
             loginTitle: "Zaloguj się",
             registerTitle: "Rejestracja",
+            username: "Nazwa użytkownika",
             email: "Email",
             password: "Hasło",
             confirmPassword: "Potwierdź hasło",
@@ -19,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         en: {
             loginTitle: "Log in",
             registerTitle: "Sign up",
+            username: "Username",
             email: "Email",
             password: "Password",
             confirmPassword: "Confirm password",
@@ -57,47 +61,55 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // walidacja logowania
-    if (loginForm) {
+   if (loginForm) {
+        loginForm.setAttribute("action", "login.php");
+        loginForm.setAttribute("method", "post");
+
         loginForm.addEventListener("submit", e => {
-            e.preventDefault();
             const email = loginForm.email.value.trim();
             const password = loginForm.password.value;
 
             if (!validateEmail(email)) {
                 alert("Nieprawidłowy adres email.");
-                return;
-            }
-            if (password.length === 0) {
-                alert("Hasło nie może być puste.");
+                e.preventDefault();
                 return;
             }
 
-            alert("Zalogowano (symulacja).");
+            if (password.length === 0) {
+                alert("Hasło nie może być puste.");
+                e.preventDefault();
+                return;
+            }
         });
     }
 
     // walidacja rejestracji
-    if (registerForm) {
+      if (registerForm) {
+        registerForm.setAttribute("action", "register.php");
+        registerForm.setAttribute("method", "post");
+
         registerForm.addEventListener("submit", e => {
-            e.preventDefault();
             const email = registerForm.email.value.trim();
             const password = registerForm.password.value;
             const confirmPassword = registerForm.confirmPassword.value;
 
             if (!validateEmail(email)) {
                 alert("Nieprawidłowy adres email.");
-                return;
-            }
-            if (!validatePassword(password)) {
-                alert("Hasło musi mieć min. 8 znaków, dużą i małą literę oraz cyfrę.");
-                return;
-            }
-            if (password !== confirmPassword) {
-                alert("Hasła nie są zgodne.");
+                e.preventDefault();
                 return;
             }
 
-            alert("Rejestracja zakończona (symulacja).");
+            if (!validatePassword(password)) {
+                alert("Hasło musi mieć min. 8 znaków, dużą i małą literę oraz cyfrę.");
+                e.preventDefault();
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert("Hasła nie są zgodne.");
+                e.preventDefault();
+                return;
+            }
         });
     }
 
@@ -106,11 +118,13 @@ document.addEventListener("DOMContentLoaded", () => {
         return re.test(email.toLowerCase());
     }
 
-    function validatePassword(password) {
-        const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-        return re.test(password);
-    }
-
+  function validatePassword(password) {
+    if (password.length < 8) return false;
+    if (!/[A-Z]/.test(password)) return false;
+    if (!/[a-z]/.test(password)) return false;
+    if (!/\d/.test(password)) return false;
+    return true;
+}
     // FLAGI
     const flagMap = {
         PL: "🇵🇱",

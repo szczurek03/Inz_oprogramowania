@@ -1,0 +1,20 @@
+
+INSERT INTO Nazwa_subskrybcji (nazwa_subskrybcji) VALUES ('brak subskrypcji');
+
+INSERT INTO Subskrybcja (id_nazwa_subskrybcji, data_rozpoczęcia, data_zakończenia, cena, aktywny)
+VALUES (
+  1,  
+  '1000-01-01',            
+  '1000-01-01',            
+  0,                      
+  0                        
+);
+
+NSERT INTO Kraj (id_kraju, nazwa_kraju) VALUES
+  (1, 'Polska'),
+  (2, 'Stany Zjednoczone'),
+  (3, 'Niemcy'),
+  (4, 'Francja'),
+  (5, 'Wielka Brytania');
+
+
