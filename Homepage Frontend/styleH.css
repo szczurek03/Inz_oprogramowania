@@ -1,0 +1,152 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #000000, #3a0ca3);
+  color: white;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.user-info {
+  position: absolute;
+  right: 30px;
+  top: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: rgb(174, 55, 195);
+}
+
+.user-info .username {
+  color: rgb(174, 55, 195);
+}
+
+.user-info i {
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.search-section {
+  padding: 20px 40px;
+}
+
+.search-bar {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  width: 600px;
+  margin-bottom: 20px;
+}
+
+.search-bar i {
+  margin-right: 10px;
+  color: #ccc;
+}
+
+.search-bar input {
+  background: none;
+  border: none;
+  color: white;
+  outline: none;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.recommendation-title {
+  font-size: 35px;
+  margin-top: 10px;
+  color: #bd92ff;
+}
+
+.media-section {
+  padding: 30px 40px;
+}
+
+.media-wrapper {
+  display: flex;
+  gap: 30px;
+}
+
+
+.section-text h3 {
+  font-size: 24px;
+  color: #bd92ff;
+  margin-bottom: 5px;
+}
+
+.section-text p {
+  font-size: 15px;
+  color: #ccc;
+}
+
+.media-row {
+  display: flex;
+  align-items: flex-start;
+}
+
+.media-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  scroll-behavior: smooth;
+}
+
+.media-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
+  padding:20px;
+  min-width: 120px;
+  max-width: 180px;
+  width: 30vw;
+  height: 15vw;
+}
+
+.media-card img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+}
+
+.card-meta {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.card-meta .number {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  display: block;
+}
+
+.card-meta .title {
+  font-size: 12px;
+  margin-top: 2px;
+  color: #cccccc;
+}
+
+.more-arrow {
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  margin-left: 15px;
+  font-size: 18px;
+  color: #a855f7;
+}
+
+.logo {
+  width: 300px; 
+  height: auto;
+  margin-top: -25px;
+}
+
