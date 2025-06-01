@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2025 at 11:40 PM
+-- Generation Time: Jun 02, 2025 at 12:28 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -287,10 +287,10 @@ CREATE TABLE `treść` (
 --
 
 INSERT INTO `treść` (`id_tresc`, `tytuł`, `opis`, `rok_wydania`, `data_dodania`, `id_reżysera`, `id_kraj`, `id_kategoria_wiekowa`, `id_gatunek`, `długość`, `img_glowne`, `img_mini`, `typ`) VALUES
-(1, 'Fight Club', 'Cierpiący na bezsenność mężczyzna poznaje gardzącego konsumpcyjnym stylem życia Tylera Durdena, który jest jego zupełnym przeciwieństwem.', 1999, '2025-06-01', 1, 2, 1, 1, '139', NULL, NULL, 'film'),
-(2, 'Siedem', 'Dwóch policjantów stara się złapać seryjnego mordercę wybierającego swoje ofiary według specjalnego klucza - siedmiu grzechów głównych.', 1995, '2025-06-01', 1, 2, 1, 2, '127', NULL, NULL, 'film'),
-(3, 'Dr House', 'Grupa lekarzy na czele z charyzmatycznym, acz aspołecznym doktorem Housem diagnozuje nietypowe choroby, niejednokrotnie ratując życie pacjentom.', 2004, '2025-06-01', 2, 2, 1, 5, '44', NULL, NULL, 'serial'),
-(4, 'Dexter', 'Dexter prowadzi podwójne życie. Za dnia jest cenionym specjalistą ds. krwi w departamencie policji, a nocą zabija złoczyńców, którzy wymykają się organom sprawiedliwości.', 2006, '2025-06-01', 3, 2, 1, 4, '53', NULL, NULL, 'serial');
+(1, 'Fight Club', 'Cierpiący na bezsenność mężczyzna poznaje gardzącego konsumpcyjnym stylem życia Tylera Durdena, który jest jego zupełnym przeciwieństwem.', 1999, '2025-06-01', 1, 2, 1, 1, '139', NULL, 'miniaturki/fight.png', 'film'),
+(2, 'Siedem', 'Dwóch policjantów stara się złapać seryjnego mordercę wybierającego swoje ofiary według specjalnego klucza - siedmiu grzechów głównych.', 1995, '2025-06-01', 1, 2, 1, 2, '127', NULL, 'miniaturki/seven.png', 'film'),
+(3, 'Dr House', 'Grupa lekarzy na czele z charyzmatycznym, acz aspołecznym doktorem Housem diagnozuje nietypowe choroby, niejednokrotnie ratując życie pacjentom.', 2004, '2025-06-01', 2, 2, 1, 5, '44', NULL, 'miniaturki/house.png', 'serial'),
+(4, 'Dexter', 'Dexter prowadzi podwójne życie. Za dnia jest cenionym specjalistą ds. krwi w departamencie policji, a nocą zabija złoczyńców, którzy wymykają się organom sprawiedliwości.', 2006, '2025-06-01', 3, 2, 1, 4, '53', NULL, 'miniaturki/dex.png', 'serial');
 
 -- --------------------------------------------------------
 
@@ -338,10 +338,7 @@ CREATE TABLE `użytkownicy` (
 
 INSERT INTO `użytkownicy` (`id_użytkownika`, `nazwa_użytkownika`, `email`, `hasło_hash`, `id_subskrybcji`, `data_założenia`) VALUES
 (1, 'Test', 'test@gmail.pl', '$2y$10$OEEuq7i3AAmyOE63pvvPjeJA13g1cgdOTnj1R79uENjRdu5EQT4/q', 1, '2025-05-25'),
-(3, 'ssss1233', 'dupa1233@wp.pl', '$2y$10$Dve56.jjOiEfb/x/Gb8AAOOy3VbacPLoVe9TCvBfryu3lbgHlmdJu', 1, '2025-05-25'),
-(4, 'dsas', 'dupa234@wp.pl', '$2y$10$m4Vey3O5pb.6Q3X6eO42v.2uYt7R8yUFKVlJoUInlGQSIRK/7Nlum', 1, '2025-05-25'),
-(5, 'DUPA', 'dupa@wp.pl', '$2y$10$/O1LN26ZTTVMoJjmK2sxUeU0fzpa6bPQQCQ/4BBXg.Cewb62XGgMa', 1, '2025-05-26'),
-(6, 'dupadupa', 'dupa12345@wp.pl', '$2y$10$sxmlzX3OSDFq66cYd6EhI.YF6.OnBksHRtVEHhSV/Pqo/NIlO7y1y', 1, '2025-06-01');
+(7, 'DupaDupa', 'dupa@wp.pl', '$2y$10$BHN9GcAawBzlovgVCjewaOH1R7kbp7DcQ4qnqcMCO.y4GHWRPWXe.', 1, '2025-06-01');
 
 -- --------------------------------------------------------
 
@@ -577,7 +574,7 @@ ALTER TABLE `treść`
 -- AUTO_INCREMENT for table `użytkownicy`
 --
 ALTER TABLE `użytkownicy`
-  MODIFY `id_użytkownika` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_użytkownika` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `użytkownicy_pracownicy`
