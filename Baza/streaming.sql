@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2025 at 01:41 AM
+-- Generation Time: Jun 01, 2025 at 11:40 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -32,6 +32,17 @@ CREATE TABLE `gatunek` (
   `nazwa_gatunku` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `gatunek`
+--
+
+INSERT INTO `gatunek` (`id_gatunek`, `nazwa_gatunku`) VALUES
+(1, 'Drama'),
+(2, 'Thriller'),
+(3, 'Psychologiczny'),
+(4, 'Kryminał'),
+(5, 'Medyczny');
+
 -- --------------------------------------------------------
 
 --
@@ -42,6 +53,13 @@ CREATE TABLE `kategoria_wiekowa` (
   `id_kategoria_wiekowa` int(10) NOT NULL,
   `nazwa_kategorii_wiekowej` varchar(255) NOT NULL COMMENT '1 = ''7'', 2 = ''PG-13'', 3 = ''R'''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `kategoria_wiekowa`
+--
+
+INSERT INTO `kategoria_wiekowa` (`id_kategoria_wiekowa`, `nazwa_kategorii_wiekowej`) VALUES
+(1, 'R');
 
 -- --------------------------------------------------------
 
@@ -73,7 +91,10 @@ CREATE TABLE `kraj` (
 --
 
 INSERT INTO `kraj` (`id_kraj`, `nazwa_kraju`) VALUES
-(1, 'Polska');
+(1, 'Polska'),
+(2, 'USA'),
+(3, 'Wielka Brytania'),
+(4, 'Niemcy');
 
 -- --------------------------------------------------------
 
@@ -131,6 +152,13 @@ CREATE TABLE `playlisty` (
   `id_użytkownika` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `playlisty`
+--
+
+INSERT INTO `playlisty` (`id_playlisty`, `nazwa_playlisty`, `data_utworzenia`, `id_użytkownika`) VALUES
+(1, 'Przykładowa Playlista', '2025-06-01', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -141,6 +169,16 @@ CREATE TABLE `playlisty_treści` (
   `id_playlisty` int(10) NOT NULL,
   `id_treść` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `playlisty_treści`
+--
+
+INSERT INTO `playlisty_treści` (`id_playlisty`, `id_treść`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4);
 
 -- --------------------------------------------------------
 
@@ -179,6 +217,15 @@ CREATE TABLE `reżyser` (
   `nazwisko_reżysera` varchar(255) NOT NULL,
   `imie_reżysera` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `reżyser`
+--
+
+INSERT INTO `reżyser` (`id_reżysera`, `nazwisko_reżysera`, `imie_reżysera`) VALUES
+(1, 'Fincher', 'David'),
+(2, 'Yaitanes', 'Greg'),
+(3, 'Dahl', 'John');
 
 -- --------------------------------------------------------
 
@@ -229,11 +276,21 @@ CREATE TABLE `treść` (
   `id_kraj` int(10) NOT NULL,
   `id_kategoria_wiekowa` int(10) NOT NULL,
   `id_gatunek` int(10) NOT NULL,
-  `Playlistyid_playlisty` int(10) NOT NULL,
   `długość` varchar(10) NOT NULL,
   `img_glowne` varchar(255) DEFAULT NULL,
-  `img_mini` varchar(255) DEFAULT NULL
+  `img_mini` varchar(255) DEFAULT NULL,
+  `typ` enum('film','serial') NOT NULL DEFAULT 'film'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `treść`
+--
+
+INSERT INTO `treść` (`id_tresc`, `tytuł`, `opis`, `rok_wydania`, `data_dodania`, `id_reżysera`, `id_kraj`, `id_kategoria_wiekowa`, `id_gatunek`, `długość`, `img_glowne`, `img_mini`, `typ`) VALUES
+(1, 'Fight Club', 'Cierpiący na bezsenność mężczyzna poznaje gardzącego konsumpcyjnym stylem życia Tylera Durdena, który jest jego zupełnym przeciwieństwem.', 1999, '2025-06-01', 1, 2, 1, 1, '139', NULL, NULL, 'film'),
+(2, 'Siedem', 'Dwóch policjantów stara się złapać seryjnego mordercę wybierającego swoje ofiary według specjalnego klucza - siedmiu grzechów głównych.', 1995, '2025-06-01', 1, 2, 1, 2, '127', NULL, NULL, 'film'),
+(3, 'Dr House', 'Grupa lekarzy na czele z charyzmatycznym, acz aspołecznym doktorem Housem diagnozuje nietypowe choroby, niejednokrotnie ratując życie pacjentom.', 2004, '2025-06-01', 2, 2, 1, 5, '44', NULL, NULL, 'serial'),
+(4, 'Dexter', 'Dexter prowadzi podwójne życie. Za dnia jest cenionym specjalistą ds. krwi w departamencie policji, a nocą zabija złoczyńców, którzy wymykają się organom sprawiedliwości.', 2006, '2025-06-01', 3, 2, 1, 4, '53', NULL, NULL, 'serial');
 
 -- --------------------------------------------------------
 
@@ -245,6 +302,20 @@ CREATE TABLE `treść_gatunek` (
   `id_treść` int(10) NOT NULL,
   `id_gatunek` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `treść_gatunek`
+--
+
+INSERT INTO `treść_gatunek` (`id_treść`, `id_gatunek`) VALUES
+(1, 1),
+(1, 3),
+(2, 2),
+(2, 4),
+(3, 5),
+(3, 1),
+(4, 4),
+(4, 2);
 
 -- --------------------------------------------------------
 
@@ -268,7 +339,9 @@ CREATE TABLE `użytkownicy` (
 INSERT INTO `użytkownicy` (`id_użytkownika`, `nazwa_użytkownika`, `email`, `hasło_hash`, `id_subskrybcji`, `data_założenia`) VALUES
 (1, 'Test', 'test@gmail.pl', '$2y$10$OEEuq7i3AAmyOE63pvvPjeJA13g1cgdOTnj1R79uENjRdu5EQT4/q', 1, '2025-05-25'),
 (3, 'ssss1233', 'dupa1233@wp.pl', '$2y$10$Dve56.jjOiEfb/x/Gb8AAOOy3VbacPLoVe9TCvBfryu3lbgHlmdJu', 1, '2025-05-25'),
-(4, 'dsas', 'dupa234@wp.pl', '$2y$10$m4Vey3O5pb.6Q3X6eO42v.2uYt7R8yUFKVlJoUInlGQSIRK/7Nlum', 1, '2025-05-25');
+(4, 'dsas', 'dupa234@wp.pl', '$2y$10$m4Vey3O5pb.6Q3X6eO42v.2uYt7R8yUFKVlJoUInlGQSIRK/7Nlum', 1, '2025-05-25'),
+(5, 'DUPA', 'dupa@wp.pl', '$2y$10$/O1LN26ZTTVMoJjmK2sxUeU0fzpa6bPQQCQ/4BBXg.Cewb62XGgMa', 1, '2025-05-26'),
+(6, 'dupadupa', 'dupa12345@wp.pl', '$2y$10$sxmlzX3OSDFq66cYd6EhI.YF6.OnBksHRtVEHhSV/Pqo/NIlO7y1y', 1, '2025-06-01');
 
 -- --------------------------------------------------------
 
@@ -345,7 +418,7 @@ ALTER TABLE `playlisty`
 -- Indexes for table `playlisty_treści`
 --
 ALTER TABLE `playlisty_treści`
-  ADD PRIMARY KEY (`id_playlisty`),
+  ADD PRIMARY KEY (`id_playlisty`,`id_treść`) USING BTREE,
   ADD KEY `FKPlaylisty_104558` (`id_treść`);
 
 --
@@ -420,13 +493,13 @@ ALTER TABLE `użytkownicy_pracownicy`
 -- AUTO_INCREMENT for table `gatunek`
 --
 ALTER TABLE `gatunek`
-  MODIFY `id_gatunek` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_gatunek` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `kategoria_wiekowa`
 --
 ALTER TABLE `kategoria_wiekowa`
-  MODIFY `id_kategoria_wiekowa` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kategoria_wiekowa` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `komentarze`
@@ -438,7 +511,7 @@ ALTER TABLE `komentarze`
 -- AUTO_INCREMENT for table `kraj`
 --
 ALTER TABLE `kraj`
-  MODIFY `id_kraj` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_kraj` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `nazwa_subskrybcji`
@@ -462,7 +535,7 @@ ALTER TABLE `oceny`
 -- AUTO_INCREMENT for table `playlisty`
 --
 ALTER TABLE `playlisty`
-  MODIFY `id_playlisty` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_playlisty` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `prośby`
@@ -480,7 +553,7 @@ ALTER TABLE `rekomendacje`
 -- AUTO_INCREMENT for table `reżyser`
 --
 ALTER TABLE `reżyser`
-  MODIFY `id_reżysera` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_reżysera` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `status_prośby`
@@ -498,13 +571,13 @@ ALTER TABLE `subskrybcja`
 -- AUTO_INCREMENT for table `treść`
 --
 ALTER TABLE `treść`
-  MODIFY `id_tresc` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tresc` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `użytkownicy`
 --
 ALTER TABLE `użytkownicy`
-  MODIFY `id_użytkownika` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_użytkownika` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `użytkownicy_pracownicy`

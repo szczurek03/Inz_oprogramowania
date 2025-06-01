@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Streamflix - Strona główna</title>
+  <link rel="stylesheet" href="styleH.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Streamflix Logo" class="logo" />
+    <div class="user-info">
+      <span class="username"><?php echo $_SESSION['email']; ?></span>
+      <i class="fas fa-user-circle"></i>
+      <i class="fas fa-cog"></i>
+    </div>
+  </header>
+
+  <section class="search-section">
+    <div class="search-bar">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Wyszukaj film lub serial" />
+    </div>
+    <h2 class="recommendation-title">Przeglądaj rekomendacje przygotowane dla ciebie:</h2>
+  </section>
+
+  <section class="media-section">
+    <div class="media-wrapper">
+      <div class="section-text">
+        <h3>Top 10 filmów dla Ciebie</h3>
+        <p>Sprawdź, co nasz system rekomendacji przygotował specjalnie dla Ciebie – oceń filmy i dopasuj je do swoich upodobań!</p>
+      </div>
+      <div class="media-row">
+        <div class="media-container" id="movies">
+          <div class="media-card">
+            <img src="placeholder.jpg" alt="Film 1" />
+            <div class="card-meta">
+              <span class="number">1</span>
+              <p class="title"><?php echo $film1_tytul; ?></p>
+            </div>
+          </div>
+          <div class="media-card">
+            <img src="placeholder.jpg" alt="Film 2" />
+            <div class="card-meta">
+              <span class="number">2</span>
+              <p class="title"><?php echo $film2_tytul; ?></p>
+            </div>
+          </div>
+          <div class="media-card">
+            <img src="placeholder.jpg" alt="Film 3" />
+            <div class="card-meta">
+              <span class="number">3</span>
+              <p class="title"><?php echo $film3_tytul; ?></p>
+            </div>
+          </div>
+          <div class="media-card">
+            <img src="placeholder.jpg" alt="Film 4" />
+            <div class="card-meta">
+              <span class="number">4</span>
+              <p class="title"><?php echo $film4_tytul; ?></p>
+            </div>
+          </div>
+          <div class="media-card">
+            <img src="placeholder.jpg" alt="Film 5" />
+            <div class="card-meta">
+              <span class="number">5</span>
+              <p class="title"><?php echo $film5_tytul; ?></p>
+            </div>
+          </div>
+        </div>
+        <div class="more-arrow" onclick="scrollMore('movies')">
+          <span>więcej</span>
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="media-section">
+    <div class="media-wrapper">
+      <div class="section-text">
+        <h3>Top 10 seriali dla Ciebie</h3>
+        <p>Sprawdź, co nasz system rekomendacji przygotował specjalnie dla Ciebie – oceń seriale i dopasuj je do swoich upodobań!</p>
+      </div>
+      <div class="media-row">
+        <div class="media-container" id="series">
+          <div class="media-card">
+            <img src="placeholder.jpg" alt="Serial 1" />
+            <div class="card-meta">
+              <span class="number">1</span>
+              <p class="title"><?php echo $serial1_tytul; ?></p>
+            </div>
+          </div>
+          <div class="media-card">
+            <img src="placeholder.jpg" alt="Serial 2" />
+            <div class="card-meta">
+              <span class="number">2</span>
+              <p class="title"><?php echo $serial2_tytul; ?></p>
+            </div>
+          </div>
+          <div class="media-card">
+            <img src="placeholder.jpg" alt="Serial 3" />
+            <div class="card-meta">
+              <span class="number">3</span>
+              <p class="title"><?php echo $serial3_tytul; ?></p>
+            </div>
+          </div>
+          <div class="media-card">
+            <img src="placeholder.jpg" alt="Serial 4" />
+            <div class="card-meta">
+              <span class="number">4</span>
+              <p class="title"><?php echo $serial4_tytul; ?></p>
+            </div>
+          </div>
+          <div class="media-card">
+            <img src="placeholder.jpg" alt="Serial 5" />
+            <div class="card-meta">
+              <span class="number">5</span>
+              <p class="title"><?php echo $serial5_tytul; ?></p>
+            </div>
+          </div>        
+        </div>
+        <div class="more-arrow" onclick="scrollMore('series')">
+          <span>więcej</span>
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
