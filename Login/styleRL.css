@@ -37,9 +37,9 @@ body {
 }
 
 .logo {
-    font-size: 3rem;
-    color: #a855f7;
-    margin-bottom: 30px;
+    width: 300px; 
+    height: auto;
+    margin-top: -25px;
 }
 
 .login-box {
