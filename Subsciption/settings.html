@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleSET.css" class="css">
+    <title>Ustawienia</title>
+</head>
+<body>
+    <class class="container">
+        
+    <form class="settings-form">
+      <div class="form-group">
+        <label for="email">Zmień e-mail:</label>
+        <input type="email" id="email" placeholder="nowy@email.com">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Nowe hasło:</label>
+        <input type="password" id="password" placeholder="******">
+      </div>
+
+     <div class="form-group quality-selector">
+        <label for="quality">Domyślna jakość odtwarzania:</label>
+        <select id="quality">
+            <option>Auto</option>
+            <option>SD</option>
+            <option>HD</option>
+            <option>Full HD</option>
+        </select>
+    </div>
+
+    <div class="form-group styled-checkbox">
+        <label for="subtitles">
+            <input type="checkbox" id="subtitles">
+            <span class="checkmark"></span>
+            <span class="checkbox-label-text">Włącz napisy domyślnie</span>
+        </label>
+    </div>
+
+      <button class="save" type="submit">Zapisz zmiany</button>
+    </form>
+    <button class="danger">Usuń konto</button>
+  </div>
+</body>
+</html>
