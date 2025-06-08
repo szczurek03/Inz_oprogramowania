@@ -1,0 +1,108 @@
+<?php
+session_start();
+require_once "loginconnect.php";
+
+$title = $_GET['title'] ?? '';
+
+$stmt = $conn->prepare("SELECT 
+    t.tytuł,
+    t.opis,
+    t.rok_wydania AS rok,
+    t.długość AS długość,
+    t.img,
+    g.nazwa_gatunku AS gatunek,
+    k.nazwa_kraju AS kraj,
+    kw.nazwa_kategorii_wiekowej AS kategoria_wiekowa
+FROM treść2 t
+JOIN gatunek2 g ON t.id_gatunek = g.id_gatunek
+JOIN kraj2 k ON t.id_kraj = k.id_kraj
+JOIN kategoria_wiekowa2 kw ON t.id_kategoria_wiekowa = kw.id_kategoria_wiekowa
+WHERE t.tytuł = ?
+LIMIT 1
+");
+$stmt->bind_param("s", $title);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$film = $result->fetch_assoc();
+
+if (!$film) {
+    echo "Film nie został znaleziony.";
+    exit;
+}
+
+$conn->close();
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><?php echo htmlspecialchars($film['tytuł']); ?></title>
+    <link rel="stylesheet" href="styleP.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="logo">
+        </div>
+        <div class="user">
+            <span><?php echo $_SESSION['nazwa_użytkownika'] ?? 'Użytkownik'; ?></span>
+            <i class="fas fa-user-circle"></i>
+            <i class="fas fa-cog"></i>
+        </div>
+    </div>
+    
+    <div class="wrapper">    
+        <div class="left">
+            
+            <div class="movie_image">
+            <span class="movie_overlay"></span>
+            <i class="fas fa-play"></i>
+            <img src="<?php echo htmlspecialchars($film['img']); ?>" alt="Obraz filmu" />
+            </div>
+
+            
+            <div class="title">
+                <h2><?php echo htmlspecialchars($film['tytuł']); ?></h2>
+                <span class="year">(<?php echo htmlspecialchars($film['rok'] ?? ''); ?>)</span>
+            </div>
+            
+            <div class="movie_info">
+                <span><strong>Gatunek:</strong> <?php echo htmlspecialchars($film['gatunek'] ?? 'Brak danych'); ?></span>
+                <span><strong>Czas trwania:</strong> <?php echo htmlspecialchars($film['długość'] ?? ''); ?></span>
+                <span><strong>Kraj produkcji:</strong> <?php echo htmlspecialchars($film['kraj'] ?? ''); ?></span>
+                <span><strong>Kategoria wiekowa:</strong> <?php echo htmlspecialchars($film['kategoria_wiekowa'] ?? ''); ?></span>
+            </div>
+            
+            <div class="controls">
+                <button class="play-btn">▶ Play</button>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="description">
+                <p><?php echo htmlspecialchars($film['opis'] ?? 'Brak opisu'); ?></p>
+            </div>
+            
+           <div class="rate">
+            <button onclick="sendRating('<?php echo addslashes($film['tytuł']); ?>', 'like')">
+             <i class="fas fa-thumbs-up"></i>
+            </button>
+            <button onclick="sendRating('<?php echo addslashes($film['tytuł']); ?>', 'dislike')">
+             <i class="fas fa-thumbs-down"></i>
+            </button>
+            </div>
+
+            
+            <div class="comment">
+                <p>Dodaj komentarz:</p>
+                <textarea placeholder="Dodaj swoją opinię..."></textarea>
+            </div>
+        </div>
+    </div>
+    <script src="like.js"></script>
+</body>
+</html>

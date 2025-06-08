@@ -1,28 +1,14 @@
 body {
-  margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #000000, #3a0ca3);
   color: white;
+  min-height: 100vh;
+  
 }
 
-.example::-webkit-scrollbar {
-  display: none;
+* {
+  box-sizing: border-box;
 }
-.media-container::-webkit-scrollbar {
-  display: none;
-}
-.media-card::-webkit-scrollbar {
-  display: none;
-}
-.media-container {
-  display: flex;
-  gap: 20px;
-
-}
-
-
-
-
 
 header {
   display: flex;
@@ -66,7 +52,6 @@ header {
 
 .search-bar i {
   margin-right: 10px;
-  color: #ccc;
 }
 
 .search-bar input {
@@ -81,18 +66,28 @@ header {
 .recommendation-title {
   font-size: 35px;
   margin-top: 10px;
-  color: #bd92ff;
 }
 
 .media-section {
+  display: flex;
   padding: 30px 40px;
+  width: 100%;
 }
 
 .media-wrapper {
-  display: flex;
-  gap: 30px;
+  height: 300px;
+  width: 30%;
+  font-size: 24px;
 }
 
+.right{
+  width: 60.8%;
+  
+}
+
+.fa-arrow-right, .fa-arrow-left{
+  font-size: 45px;
+}
 
 .section-text h3 {
   font-size: 24px;
@@ -106,38 +101,37 @@ header {
 }
 
 .media-row {
-  display: flex;
   align-items: flex-start;
+
 }
 
 .media-container {
   display: flex;
-  overflow-x: scroll;
-  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
   scrollbar-width: none;
-
+  padding-inline: 0;
+  scroll-behavior: smooth;
+  position: relative;
+  
+  
 }
-.media-container::-webkit-scrollbar {
-  display: none; 
-}
-
 
 .media-card {
+  flex: 0 0 18.4%;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: transparent;
-  padding:20px;
-  min-width: 120px;
-  max-width: 180px;
-  width: 30vw;
-  height: 15vw;
+ 
 }
 
 .media-card img {
-  width: 100%;
   border-radius: 10px;
   display: block;
+   width: 12vw;     
+  height: 18vw;
+  
 }
 
 .card-meta {
@@ -173,3 +167,17 @@ header {
   margin-top: -25px;
 }
 
+button[name="refresh_recommendations"] {
+  background-color: #ae37c3;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  padding: 12px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: 'Segoe UI', sans-serif;
+
+}
+button[name="refresh_recommendations"]:hover {
+  background-color: #c759e6;
+}
