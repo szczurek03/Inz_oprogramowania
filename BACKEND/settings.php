@@ -1,11 +1,13 @@
 <?php
 session_start();
+//jezeli user_id sesji nie istnieje przekierowywuje spowrotem na strone logowania
 $user_id = $_SESSION['user_id'] ?? null;
 if ($user_id === null) {
     header('Location: loginSite.php');
     exit;
 }
 
+//Dane wrazliwe - nie przechowujemy w cache
 header('Cache-Control: no-cache, no-store, must-revalidate');
 header('Pragma: no-cache');
 header('Expires: 0');
@@ -17,7 +19,7 @@ if (!isset($_SESSION['email']) && isset($_COOKIE['user_email'])) {
 require_once "loginconnect.php";
 
 
-
+//pobiera dane subskyrpcji dla danego uzytkownika
 $stmt = $conn->prepare("
     SELECT ns.nazwa_subskrybcji as nazwa, s.data_zakończenia, s.cena, s.aktywny as status
     FROM użytkownicy u
