@@ -182,7 +182,7 @@ $stmt_liked->close();
   <div class="right">
     <div class="media-container" id="liked">
       <?php foreach ($polubione_filmy as $index => $film): ?>
-        <a href="movie_preview.php?title=<?php echo urlencode($film['tytuł']); ?>" class="media-card-link">
+        <a href="movie_preview.php?title=<?php echo urlencode($film['tytuł']); ?>&source=home" class="media-card-link">
           <div class="media-card">
             <img src="<?php echo htmlspecialchars($film['img']); ?>" alt="Film <?php echo $index + 1; ?>" />
             <div class="card-meta">

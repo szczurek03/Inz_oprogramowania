@@ -111,7 +111,7 @@ $stmt->close();
             </form>
             <?php endif; ?>
 
-        <a href="sub.php" class="upgrade-link" >Przejdź na premium!</a>
+        <a href="sub.php" class="upgrade-link" >Przejdź do strony zakupu!</a>
 
         <div class="plans">
                 <span class="plan-icon smile"></span>

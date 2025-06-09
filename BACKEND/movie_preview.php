@@ -2,6 +2,7 @@
 session_start();
 require_once "loginconnect.php";
 
+$user_id = $_SESSION['user_id'] ?? null;
 $title = trim($_GET['title'] ?? '');
 $source = $_GET['source'] ?? 'search';
 
@@ -9,6 +10,7 @@ if (empty($title)) {
     $error_message = "Brak tytułu do wyszukania.";
 } else {
     $sql = "SELECT 
+        t.id_tresc,
         t.tytuł,
         t.opis,
         t.rok_wydania AS rok,
@@ -42,7 +44,22 @@ if (empty($title)) {
 
     if (!$film) {
         $error_message = "Film nie został znaleziony.";
+    } else {
+        if ($user_id) {
+            $stmt_rating = $conn->prepare("
+                SELECT id_like 
+                FROM oceny 
+                WHERE id_użytkownika = ? AND id_treść = ?
+            ");
+            $stmt_rating->bind_param("ii", $user_id, $film['id_tresc']);
+            $stmt_rating->execute();
+            $result_rating = $stmt_rating->get_result();
+            $rating = $result_rating->fetch_assoc();
+            $stmt_rating->close();
+        }
     }
+
+    
 
     $stmt->close();
 }
@@ -142,8 +159,16 @@ $conn->close();
             <button onclick="sendRating('<?php echo addslashes($film['tytuł']); ?>', 'dislike')">
              <i class="fas fa-thumbs-down"></i>
             </button>
+            <?php if (isset($rating)): ?>
+                    <?php if ($rating['id_like'] == 1): ?>
+                        <span class="liked">Liked</span>
+                    <?php elseif ($rating['id_like'] == 2): ?>
+                        <span class="disliked">Disliked</span>
+                    <?php endif; ?>
+                <?php else: ?>
+                    <span class="no-rating">Brak oceny</span>
+                <?php endif; ?>
             </div>
-
             
             <div class="comment">
                 <p>Dodaj komentarz:</p>
