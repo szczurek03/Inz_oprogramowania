@@ -39,7 +39,7 @@
                 <input type="password" id="password" name="password" required />
 
                 <button data-i18n="loginButton" type="submit">Zaloguj</button>
-                <p class="link" data-i18n="toRegister">Nie masz konta? <a href="register.php">Zarejestruj się</a></p>
+                <p class="link" data-i18n="toRegister">Nie masz konta? <a href="registerSite.php">Zarejestruj się</a></p>
             </form>
         </div>
     </div>
