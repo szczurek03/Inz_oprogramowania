@@ -2,22 +2,17 @@
 session_start();
 require_once "loginconnect.php";
 
+//walidacja uzytkownika po stronie backend
 function validateUsername($username) {
     return preg_match('/^[a-zA-Z0-9._]{3,}$/', $username);
 }
+//walidacja email po stronie backend
 function validateEmail($email) {
     return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
 
-// $countryMap = [
-//     'pl' => 1,
-//     'us' => 2,
-//     'de' => 3,
-//     'fr' => 4,
-//     'gb' => 5,
-// ];
-
+//sprawdzanie czy formularz jest pusty
 if (isset($_POST['email'])) {
     $email = trim($_POST['email']);
 } else {
@@ -78,18 +73,21 @@ $stmt->bind_param("ss", $email, $username); //ochrona przed sql injection
 $stmt->execute();
 $result = $stmt->get_result();
 
+//sprawdzenie czy dana nazwa/email jest zajety
 if ($result && $result->num_rows > 0) {
     $_SESSION['error'] = "Email lub nazwa użytkownika jest już zajęta.";
     header("Location: registerSite.php");
     exit;
 }
 
+//hashowanie hasla
 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
 $sql = "INSERT INTO Użytkownicy (nazwa_użytkownika, email, hasło_hash, id_subskrybcji, data_założenia) VALUES (?, ?, ?, 1, CURDATE())";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("sss", $username, $email, $passwordHash);
 
+//sprawdzenie poprawnosci dodania uzytkownika do bazy danych
 if ($stmt->execute()) {
     $_SESSION['success'] = "Rejestracja zakończona sukcesem. Możesz się zalogować.";
     header("Location: loginSite.php");
