@@ -56,7 +56,7 @@
                 </div>
 
                 <button type="submit" data-i18n="registerButton">Zarejestruj się</button>
-                <p class="link" data-i18n="toLogin">Masz już konto? <a href="loginSite.html">Zaloguj się</a></p>
+                <p class="link" data-i18n="toLogin">Masz już konto? <a href="loginSite.php">Zaloguj się</a></p>
             </form>
         </div>
     </div>
