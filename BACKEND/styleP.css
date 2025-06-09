@@ -6,10 +6,34 @@ body {
   min-height: 100vh;
 }
 
+.back-btn {
+   position: absolute;
+    top: 25px;
+    left: 10px;
+    background-color: #a855f7; 
+    padding: 8px 16px;
+    z-index: 1000;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.back-btn:hover {
+    background-color:  rgb(130, 42, 145); 
+}
+.back-btn i {
+    font-size: 14px;
+}
+
+
+
 .header {
   display: flex;
-  justify-content: center; /* zamiast space-around */
-  position: relative; /* żeby pozycjonowanie absolutne user działało względem header */
+  justify-content: center; 
+  position: relative; 
   align-items: center;
 }
 * {
@@ -26,18 +50,20 @@ body {
   align-items: center;
   gap: 15px;
   color: rgb(174, 55, 195);
-  font-size: 16px; /* dopasuj, można zwiększyć */
+  font-size: 16px; 
 }
 
 .user span {
   color: rgb(174, 55, 195);
-  font-size: 18px; /* lub jak w home */
+  font-size: 18px; 
 }
 
 .user i {
-  font-size: 32px; /* powiększ ikony */
-  cursor: pointer;
+  font-size: 32px; 
 }
+
+
+
 
 .wrapper {
   display: flex;
@@ -54,7 +80,7 @@ body {
 
 }
 .movie_image {
-  position: relative; /* Dodaj to, jeśli jeszcze nie ma */
+  position: relative; 
   background-color: rgba(255, 255, 255, 0.1);
   aspect-ratio: 16/9;
   border-radius: 10px;
@@ -76,14 +102,14 @@ body {
 }
 
 .movie_image i.fas.fa-play {
-  position: absolute;       /* Ustaw ikonę absolutnie względem rodzica */
-  top: 50%;                 /* Przesuń do środka w pionie */
-  left: 50%;                /* Przesuń do środka w poziomie */
-  transform: translate(-50%, -50%); /* Idealne wyśrodkowanie */
-  color: white;             /* Kolor ikony */
-  font-size: 48px;          /* Rozmiar ikony, możesz zmienić */
-  pointer-events: auto;     /* Ikona jest klikalna */
-  z-index: 2;               /* Ikona nad obrazem i overlayem */
+  position: absolute;       
+  top: 50%;               
+  left: 50%;                
+  transform: translate(-50%, -50%); 
+  color: white;            
+  font-size: 48px;          
+  pointer-events: auto;     
+  z-index: 2;              
 }
 
 
@@ -235,15 +261,38 @@ body {
   box-shadow: 0 0 10px rgba(189, 146, 255, 0.3);
 }
 
-/* Scrollbar styling */
+
 ::-webkit-scrollbar {
   display: none;
 }
 
-
-
 .logo {
-  width: 300px;  /* jak w home */
+  width: 300px; 
   height: auto;
-  margin-top: -25px; /* dodać, jeśli chcesz */
+  margin-top: -25px;
+}
+
+.center-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+.error-container {
+      text-align: center;
+      max-width: 600px;
+      width: 100%; 
+      
+  }
+.error-container h1 {
+    font-size: 32px;
+    color: #c678dd;
+    margin-bottom: 20px;
+}
+.error-container p {
+    font-size: 18px;
+    color: #ccc;
+    margin-bottom: 30px;
 }

@@ -2,38 +2,75 @@
 session_start();
 require_once "loginconnect.php";
 
-$title = $_GET['title'] ?? '';
+$title = trim($_GET['title'] ?? '');
+$source = $_GET['source'] ?? 'search';
 
-$stmt = $conn->prepare("SELECT 
-    t.tytuł,
-    t.opis,
-    t.rok_wydania AS rok,
-    t.długość AS długość,
-    t.img,
-    g.nazwa_gatunku AS gatunek,
-    k.nazwa_kraju AS kraj,
-    kw.nazwa_kategorii_wiekowej AS kategoria_wiekowa
-FROM treść2 t
-JOIN gatunek2 g ON t.id_gatunek = g.id_gatunek
-JOIN kraj2 k ON t.id_kraj = k.id_kraj
-JOIN kategoria_wiekowa2 kw ON t.id_kategoria_wiekowa = kw.id_kategoria_wiekowa
-WHERE t.tytuł = ?
-LIMIT 1
-");
-$stmt->bind_param("s", $title);
-$stmt->execute();
-$result = $stmt->get_result();
+if (empty($title)) {
+    $error_message = "Brak tytułu do wyszukania.";
+} else {
+    $sql = "SELECT 
+        t.tytuł,
+        t.opis,
+        t.rok_wydania AS rok,
+        t.długość AS długość,
+        t.img,
+        g.nazwa_gatunku AS gatunek,
+        k.nazwa_kraju AS kraj,
+        kw.nazwa_kategorii_wiekowej AS kategoria_wiekowa
+    FROM treść2 t
+    JOIN gatunek2 g ON t.id_gatunek = g.id_gatunek
+    JOIN kraj2 k ON t.id_kraj = k.id_kraj
+    JOIN kategoria_wiekowa2 kw ON t.id_kategoria_wiekowa = kw.id_kategoria_wiekowa
+    WHERE ";
 
-$film = $result->fetch_assoc();
+    if ($source === 'home') {
+        $sql .= "t.tytuł = ?";
+        $title_param = $title;
+    } else {
+        $sql .= "t.tytuł LIKE ?";
+        $title_param = '%' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '%';
+    }
 
-if (!$film) {
-    echo "Film nie został znaleziony.";
-    exit;
+    $sql .= " LIMIT 1";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $title_param);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $film = $result->fetch_assoc();
+
+    if (!$film) {
+        $error_message = "Film nie został znaleziony.";
+    }
+
+    $stmt->close();
 }
 
 $conn->close();
-?>
-
+ if (isset($error_message)): ?>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Streamflix - Błąd</title>
+    <link rel="stylesheet" href="styleH.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="styleP.css" />
+</head>
+<body>
+    <div class="center-wrapper">
+    <div class="error-container">
+        <h1>Błąd</h1>
+        <p><?php echo htmlspecialchars($error_message); ?></p>
+        <a href="home.php" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Powrót
+        </a>
+    </div>
+    </div>
+</body>
+<?php else: ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,6 +81,8 @@ $conn->close();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
+    <button class="back-btn" onclick="history.back()" data-i18n="back">
+             <i class="fas fa-arrow-left"></i> Powrót</button>
     <div class="header">
         <div class="logo-container">
             <img src="logo.png" alt="Logo" class="logo">
@@ -51,7 +90,12 @@ $conn->close();
         <div class="user">
             <span><?php echo $_SESSION['nazwa_użytkownika'] ?? 'Użytkownik'; ?></span>
             <i class="fas fa-user-circle"></i>
-            <i class="fas fa-cog"></i>
+            <a href="settings.php" class="icon-btn" data-i18n-tooltip="settings" title="Ustawienia">
+                <i class="fas fa-cog"></i>
+            </a>
+            <a href="logout.php" class="icon-btn" data-i18n-tooltip="logout" title="Wyloguj się">
+                <i class="fas fa-sign-out-alt"></i>
+            </a>
         </div>
     </div>
     
@@ -78,7 +122,11 @@ $conn->close();
             </div>
             
             <div class="controls">
-                <button class="play-btn">▶ Play</button>
+                <a 
+                    class="play-btn" 
+                    target="_blank" 
+                     href="https://www.youtube.com/results?search_query=<?php echo urlencode($film['tytuł'] . ' trailer'); ?>"
+                    > ▶ Play</a>
             </div>
         </div>
 
@@ -106,3 +154,4 @@ $conn->close();
     <script src="like.js"></script>
 </body>
 </html>
+<?php endif; ?>

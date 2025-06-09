@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "loginconnect.php";
 
 function validateUsername($username) {
@@ -8,13 +9,14 @@ function validateEmail($email) {
     return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
-$countryMap = [
-    'pl' => 1,
-    'us' => 2,
-    'de' => 3,
-    'fr' => 4,
-    'gb' => 5,
-];
+
+// $countryMap = [
+//     'pl' => 1,
+//     'us' => 2,
+//     'de' => 3,
+//     'fr' => 4,
+//     'gb' => 5,
+// ];
 
 if (isset($_POST['email'])) {
     $email = trim($_POST['email']);
@@ -40,52 +42,62 @@ if (isset($_POST['username'])) {
     $username = '';
 }
 
-if (isset($_POST['country']) && array_key_exists($_POST['country'], $countryMap)) {
-    $countryId = $countryMap[$_POST['country']];
-} else {
-    $countryId = 0; 
-}
-
+// if (isset($_POST['country']) && array_key_exists($_POST['country'], $countryMap)) {
+//     $countryId = $countryMap[$_POST['country']];
+// } else {
+//     $countryId = 0; 
+// }
 
 if (!validateEmail($email)) {
-    echo "Nieprawidłowy adres email.";
+    $_SESSION['error'] = "Nieprawidłowy adres email.";
+    header("Location: registerSite.php.php");
     exit;
 }
 
 if (!validateUsername($username)) {
-    echo "Nazwa użytkownika może zawierać tylko litery, cyfry, kropki i podkreślenia";
+    $_SESSION['error'] = "Nazwa użytkownika może zawierać tylko litery, cyfry, kropki i podkreślenia.";
+    header("Location: registerSite.php");
     exit;
 }
 
-if (empty($email) || empty($password) || empty($confirmPassword) || empty($username) || $countryId == 0) {
-    echo "Wszystkie pola są wymagane.";
+if (empty($email) || empty($password) || empty($confirmPassword) || empty($username)) {
+    $_SESSION['error'] = "Wszystkie pola są wymagane.";
+    header("Location: registerSite.php");
     exit;
 }
 
 if ($password !== $confirmPassword) {
-    echo "Hasła nie są zgodne.";
+    $_SESSION['error'] = "Hasła nie są zgodne.";
+    header("Location: registerSite.php");
     exit;
 }
 
-$sql = "SELECT id_użytkownika FROM Użytkownicy WHERE email = '$email' OR nazwa_użytkownika = '$username'";
-$result = $conn->query($sql);
+$sql = "SELECT id_użytkownika FROM Użytkownicy WHERE email = ? OR nazwa_użytkownika = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("ss", $email, $username); //ochrona przed sql injection
+$stmt->execute();
+$result = $stmt->get_result();
 
 if ($result && $result->num_rows > 0) {
-    echo "Email lub nazwa użytkownika jest już zajęta.";
+    $_SESSION['error'] = "Email lub nazwa użytkownika jest już zajęta.";
+    header("Location: registerSite.php");
     exit;
 }
 
 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-$sql = "INSERT INTO Użytkownicy (nazwa_użytkownika, email, hasło_hash,id_subskrybcji, data_założenia) 
-        VALUES ('$username', '$email', '$passwordHash',1, CURDATE())";
+$sql = "INSERT INTO Użytkownicy (nazwa_użytkownika, email, hasło_hash, id_subskrybcji, data_założenia) VALUES (?, ?, ?, 1, CURDATE())";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("sss", $username, $email, $passwordHash);
 
-if ($conn->query($sql) === TRUE) {
-    echo "Rejestracja zakończona sukcesem.";
+if ($stmt->execute()) {
+    $_SESSION['success'] = "Rejestracja zakończona sukcesem. Możesz się zalogować.";
+    header("Location: loginSite.php");
 } else {
-    echo "Błąd podczas rejestracji: " . $conn->error;
+    $_SESSION['error'] = "Błąd podczas rejestracji: " . $conn->error;
+    header("Location: registerSite.php");
 }
 
+$stmt->close();
 $conn->close();
-
 ?>

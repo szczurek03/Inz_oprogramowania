@@ -18,6 +18,17 @@
         <h1 class="logo">STREAMFLIX</h1>
         <div class="login-box">
             <h2 data-i18n="registerTitle">Rejestracja</h2>
+            <?php
+            session_start();
+            if (isset($_SESSION['error'])) {
+                echo '<div class="error-message" data-i18n="error">' . htmlspecialchars($_SESSION['error']) . '</div>';
+                unset($_SESSION['error']);
+            }
+            if (isset($_SESSION['success'])) {
+                echo '<div class="success-message" data-i18n="success">' . htmlspecialchars($_SESSION['success']) . '</div>';
+                unset($_SESSION['success']);
+            }
+            ?>
             <form id="registerForm" action="register.php" method="post">
                 <label for="email" data-i18n="email">Email</label>
                 <input type="email" id="email" name="email" required />

@@ -9,6 +9,12 @@ body {
     align-items: center;
 }
 
+.logo {
+  width: 300px; 
+  height: auto;
+  margin-top: -25px;
+}
+
 .container {
     text-align: center;
 }
@@ -137,4 +143,21 @@ button:hover {
   font-size: 20px;
   pointer-events: none;
   user-select: none;
+}
+
+
+.error-message, .success-message {
+         margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 14px;
+}
+.error-message {
+            background-color: rgb(65,40,124);
+            color: #d32f2f;
+ }
+.success-message {
+            background-color: rgb(65,40,124);
+            color: #388e3c;
 }

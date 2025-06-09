@@ -1,11 +1,18 @@
 <?php
 session_start();
 $user_id = $_SESSION['user_id'] ?? null;
+if ($user_id === null) {
+    header('Location: loginSite.php');
+    exit;
+}
+
+header('Cache-Control: no-cache, no-store, must-revalidate');
+header('Pragma: no-cache');
+header('Expires: 0');
 
 if (!isset($_SESSION['email']) && isset($_COOKIE['user_email'])) {
     $_SESSION['email'] = $_COOKIE['user_email'];   
 }
-
 
 require_once "loginconnect.php";
 
@@ -110,7 +117,13 @@ $stmt_liked->close();
     <div class="user-info">
       <span class="username"><?php echo $_SESSION['nazwa_użytkownika']; ?></span>
       <i class="fas fa-user-circle"></i>
-      <i class="fas fa-cog"></i>
+      <a href="settings.php" class="icon-btn" data-i18n-tooltip="settings" title="Ustawienia">
+            <i class="fas fa-cog"></i>
+      </a>
+      <a href="logout.php" class="icon-btn" data-i18n-tooltip="logout" title="Wyloguj się">
+            <i class="fas fa-sign-out-alt"></i>
+      </a>
+     
     </div>
   </header>
 
@@ -137,7 +150,7 @@ $stmt_liked->close();
         <div class="media-container" id="movies">
           <?php foreach ($filmy_tytuly as $index => $film): ?>
 
-            <a href="movie_preview.php?title=<?php echo urlencode($film['tytuł']); ?>" class="media-card-link">
+            <a href="movie_preview.php?title=<?php echo urlencode($film['tytuł']); ?>&source=home" class="media-card-link">
             <div class="media-card">
               <img src="<?php echo htmlspecialchars($film['img']); ?>" alt="Film <?php echo $index + 1; ?>" />
               <div class="card-meta">
