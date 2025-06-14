@@ -162,7 +162,7 @@ $conn->close();
             </div>
             
             <?php
-            $playLinkGenerator = new PlayLinkGenerator($hasSubscription, $film['tytuł']);
+            $playLinkGenerator = new Player($hasSubscription, $film['tytuł']);
             $playLink = $playLinkGenerator->getPlayLink();
             ?>
             <div class="controls">

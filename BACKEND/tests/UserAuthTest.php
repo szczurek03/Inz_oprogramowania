@@ -18,10 +18,10 @@ private $conn;
 
     public function testLoginSuccess() {
         $auth = new UserAuth($this->conn);
-        $result = $auth->login("klaudiakrawiec2003@gmail.com", "Kalifornia1");
+        $result = $auth->login("test123456@gmail.com", "Test12345");
         $this->assertArrayHasKey('success', $result);
         $this->assertTrue($result['success']);
-        $this->assertEquals("klaudiakrawiec2003@gmail.com", $result['email']);
+        $this->assertEquals("test123456@gmail.com", $result['email']);
     } 
     public function testRegisterSuccess() {
         $register = new UserRegister($this->conn);

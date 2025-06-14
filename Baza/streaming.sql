@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Cze 14, 2025 at 11:35 AM
+-- Generation Time: Cze 14, 2025 at 01:08 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -1420,7 +1420,8 @@ INSERT INTO `oceny` (`id_oceny`, `id_użytkownika`, `id_like`, `data_oceny`, `id
 (44, 10, 1, '2025-06-08', 172),
 (45, 10, 1, '2025-06-09', 189),
 (46, 11, 2, '2025-06-14', 7),
-(47, 11, 1, '2025-06-14', 17);
+(47, 11, 1, '2025-06-14', 17),
+(48, 29, 1, '2025-06-14', 17);
 
 -- --------------------------------------------------------
 
@@ -1504,16 +1505,22 @@ INSERT INTO `rekomendacje` (`id_rekomendacji`, `id_użytkownika`, `id_treść`) 
 (840, 10, 89),
 (841, 10, 389),
 (842, 10, 275),
-(933, 9, 887),
-(934, 9, 853),
-(935, 9, 603),
-(936, 9, 41),
-(937, 9, 606),
-(938, 9, 664),
-(939, 9, 657),
-(940, 9, 469),
-(941, 9, 859),
-(942, 9, 98);
+(953, 9, 606),
+(954, 9, 398),
+(955, 9, 275),
+(956, 9, 424),
+(957, 9, 299),
+(958, 9, 917),
+(959, 9, 670),
+(960, 9, 207),
+(961, 9, 1),
+(962, 9, 492),
+(963, 29, 110),
+(964, 29, 377),
+(965, 29, 624),
+(966, 29, 30),
+(967, 29, 17),
+(968, 29, 646);
 
 -- --------------------------------------------------------
 
@@ -2169,7 +2176,11 @@ INSERT INTO `subskrybcja` (`id_subskrybcji`, `id_nazwa_subskrybcji`, `data_rozpo
 (58, 3, '0000-00-00', '2025-07-14', 59.99, 1),
 (59, 1, '0000-00-00', '2025-06-14', 0, 0),
 (60, 2, '0000-00-00', '2025-07-14', 39.99, 1),
-(61, 1, '0000-00-00', '2025-06-14', 0, 0);
+(61, 1, '0000-00-00', '2025-06-14', 0, 0),
+(62, 3, '0000-00-00', '2025-07-14', 59.99, 1),
+(63, 3, '0000-00-00', '2025-07-14', 59.99, 1),
+(64, 1, '0000-00-00', '2025-06-14', 0, 0),
+(65, 2, '0000-00-00', '2025-07-14', 39.99, 1);
 
 -- --------------------------------------------------------
 
@@ -3253,9 +3264,11 @@ INSERT INTO `użytkownicy` (`id_użytkownika`, `nazwa_użytkownika`, `email`, `h
 (1, 'Test', 'test@gmail.pl', '$2y$10$OEEuq7i3AAmyOE63pvvPjeJA13g1cgdOTnj1R79uENjRdu5EQT4/q', 1, '2025-05-25'),
 (7, 'DupaDupa', 'dupa@wp.pl', '$2y$10$BHN9GcAawBzlovgVCjewaOH1R7kbp7DcQ4qnqcMCO.y4GHWRPWXe.', 1, '2025-06-01'),
 (8, 'szx87043', 'Matixpod@gmail.com', '$2y$10$fxTylYDTDQaFRlC1xOLaGuHrDzMBzcYooE83SuMd6hosFeQAyiZ0C', 1, '2025-06-08'),
-(9, 'kk55613', 'klaudiakrawiec2003@gmail.com', '$2y$10$Y95jx/qyiXaJxJ8LU/1TR.PIrjCjnCnH7YEeJ5L71mJJ8Sko0qBVO', 1, '2025-06-08'),
+(9, 'kk55613', 'klaudiakrawiec2003@gmail.com', '$2y$10$Y95jx/qyiXaJxJ8LU/1TR.PIrjCjnCnH7YEeJ5L71mJJ8Sko0qBVO', 64, '2025-06-08'),
 (10, 'test1', 'test1@wp.pl', '$2y$10$r3.gFuyKSPizsquJrRzEQe/Sj0gA7lp65hORNt0eM.5BPXYdmct9O', 46, '2025-06-08'),
-(11, 'ala', 'ala@gmail.com', '$2y$10$CkjuIw4m6Ho18kgcxSntWeF/kvsjHp5YjAEeXFiqTtay5O5LXmE16', 61, '2025-06-14');
+(11, 'ala', 'ala@gmail.com', '$2y$10$CkjuIw4m6Ho18kgcxSntWeF/kvsjHp5YjAEeXFiqTtay5O5LXmE16', 61, '2025-06-14'),
+(26, 'test12345', 'test12345@gmail.com', '$2y$10$8Hmi39NdEhgj0ftsErIU6.TNXjXLwoIARiEg7Ow28HFgK101t0N1y', 1, '2025-06-14'),
+(29, 'test123456', 'test123456@gmail.com', '$2y$10$CyRnWe9C6fab/NpO3d8r5.JkAbzPB7P16rNCXS/xjYeZOwpSWWi4C', 65, '2025-06-14');
 
 -- --------------------------------------------------------
 
@@ -3455,7 +3468,7 @@ ALTER TABLE `ocena`
 -- AUTO_INCREMENT for table `oceny`
 --
 ALTER TABLE `oceny`
-  MODIFY `id_oceny` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id_oceny` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `playlisty`
@@ -3473,7 +3486,7 @@ ALTER TABLE `prośby`
 -- AUTO_INCREMENT for table `rekomendacje`
 --
 ALTER TABLE `rekomendacje`
-  MODIFY `id_rekomendacji` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=953;
+  MODIFY `id_rekomendacji` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=969;
 
 --
 -- AUTO_INCREMENT for table `reżyser2`
@@ -3491,13 +3504,13 @@ ALTER TABLE `status_prośby`
 -- AUTO_INCREMENT for table `subskrybcja`
 --
 ALTER TABLE `subskrybcja`
-  MODIFY `id_subskrybcji` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id_subskrybcji` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `użytkownicy`
 --
 ALTER TABLE `użytkownicy`
-  MODIFY `id_użytkownika` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_użytkownika` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `użytkownicy_pracownicy`
