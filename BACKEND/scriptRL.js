@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const registerForm = document.getElementById("registerForm");
     const languageSelect = document.getElementById("language");
 
-console.log("Skrypt załadowany");
+    console.log("Skrypt załadowany");
 
     const translations = {
         pl: {
@@ -16,8 +16,8 @@ console.log("Skrypt załadowany");
             country: "Kraj",
             loginButton: "Zaloguj",
             registerButton: "Zarejestruj się",
-            toRegister: "Nie masz konta? <a href='register.html'>Zarejestruj się</a>",
-            toLogin: "Masz już konto? <a href='login.html'>Zaloguj się</a>"
+            toRegister: "Nie masz konta?",
+            toLogin: "Masz już konto?"
         },
         en: {
             loginTitle: "Log in",
@@ -29,8 +29,8 @@ console.log("Skrypt załadowany");
             country: "Country",
             loginButton: "Log in",
             registerButton: "Sign up",
-            toRegister: "Don't have an account? <a href='register.html'>Sign up</a>",
-            toLogin: "Already have an account? <a href='login.html'>Log in</a>"
+            toRegister: "Don't have an account?",
+            toLogin: "Already have an account?"
         }
     };
 
@@ -42,7 +42,7 @@ console.log("Skrypt załadowany");
                 if (el.tagName === "INPUT") {
                     el.placeholder = translations[lang][key];
                 } else {
-                    el.innerHTML = translations[lang][key];
+                    el.textContent = translations[lang][key];
                 }
             }
         });
@@ -61,7 +61,7 @@ console.log("Skrypt załadowany");
     }
 
     // walidacja logowania
-   if (loginForm) {
+    if (loginForm) {
         loginForm.setAttribute("action", "login.php");
         loginForm.setAttribute("method", "post");
 
@@ -84,7 +84,7 @@ console.log("Skrypt załadowany");
     }
 
     // walidacja rejestracji
-      if (registerForm) {
+    if (registerForm) {
         registerForm.setAttribute("action", "register.php");
         registerForm.setAttribute("method", "post");
 
@@ -118,13 +118,14 @@ console.log("Skrypt załadowany");
         return re.test(email.toLowerCase());
     }
 
-  function validatePassword(password) {
-    if (password.length < 8) return false;
-    if (!/[A-Z]/.test(password)) return false;
-    if (!/[a-z]/.test(password)) return false;
-    if (!/\d/.test(password)) return false;
-    return true;
-}
+    function validatePassword(password) {
+        if (password.length < 8) return false;
+        if (!/[A-Z]/.test(password)) return false;
+        if (!/[a-z]/.test(password)) return false;
+        if (!/\d/.test(password)) return false;
+        return true;
+    }
+
     // FLAGI
     const flagMap = {
         PL: "🇵🇱",

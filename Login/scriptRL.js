@@ -16,8 +16,8 @@ console.log("Skrypt załadowany");
             country: "Kraj",
             loginButton: "Zaloguj",
             registerButton: "Zarejestruj się",
-            toRegister: "Nie masz konta? <a href='register.html'>Zarejestruj się</a>",
-            toLogin: "Masz już konto? <a href='login.html'>Zaloguj się</a>"
+            toRegister: "Nie masz konta? ",
+            toLogin: "Masz już konto? "
         },
         en: {
             loginTitle: "Log in",
@@ -29,8 +29,8 @@ console.log("Skrypt załadowany");
             country: "Country",
             loginButton: "Log in",
             registerButton: "Sign up",
-            toRegister: "Don't have an account? <a href='register.html'>Sign up</a>",
-            toLogin: "Already have an account? <a href='login.html'>Log in</a>"
+            toRegister: "Don't have an account? ",
+            toLogin: "Already have an account? "
         }
     };
 
