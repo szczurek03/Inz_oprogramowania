@@ -79,7 +79,7 @@ $stmt->close();
 </head>
 <body>
     <a href="home.php" class="back-btn" data-i18n="back" title="Powrót">
-        <i class="fas fa-arrow-left"></i> Powrót
+        <i class="fas fa-arrow-left"></i>
     </a>
     <header>
         <img src="logo.png" alt="Streamflix Logo" class="logo" />

@@ -163,13 +163,14 @@ $stmt_liked->close();
 
           <?php endforeach; ?>
         </div>
-
+        <?php if (count($filmy_tytuly) >= 10): ?>
         <div class="more-arrow" onclick="scrollMore('movies')">
           <i class="fas fa-arrow-right"></i>
         </div>
         <div class="more-arrow" onclick="scrollLess('movies')">
           <i class="fas fa-arrow-left"></i>
         </div>
+        <?php endif; ?>
       </div>
     </div>
   </section>

@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "loginconnect.php";
+require_once 'player.php';
 
 $user_id = $_SESSION['user_id'] ?? null;
 $title = trim($_GET['title'] ?? '');
@@ -57,6 +58,26 @@ if (empty($title)) {
             $rating = $result_rating->fetch_assoc();
             $stmt_rating->close();
         }
+        $hasSubscription = false;
+
+        if ($user_id) {
+            $stmt_sub = $conn->prepare("
+                SELECT ns.id_nazwa_subskrybcji 
+                FROM użytkownicy u
+                JOIN subskrybcja s ON u.id_subskrybcji = s.id_subskrybcji
+                JOIN nazwa_subskrybcji ns ON s.id_nazwa_subskrybcji = ns.id_nazwa_subskrybcji
+                WHERE u.id_użytkownika = ?
+            ");
+            $stmt_sub->bind_param("i", $user_id);
+            $stmt_sub->execute();
+            $result_sub = $stmt_sub->get_result();
+
+            if ($row = $result_sub->fetch_assoc()) {
+                $hasSubscription = ($row['id_nazwa_subskrybcji'] != 1);
+            }
+            $stmt_sub->close();
+        }
+
     }
 
     
@@ -98,8 +119,10 @@ $conn->close();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
-    <button class="back-btn" onclick="history.back()" data-i18n="back">
-             <i class="fas fa-arrow-left"></i> Powrót</button>
+    <button class="back-btn" onclick="window.location.href='home.php'">
+    <i class="fas fa-arrow-left"></i>
+    </button>
+
     <div class="header">
         <div class="logo-container">
             <img src="logo.png" alt="Logo" class="logo">
@@ -138,13 +161,18 @@ $conn->close();
                 <span><strong>Kategoria wiekowa:</strong> <?php echo htmlspecialchars($film['kategoria_wiekowa'] ?? ''); ?></span>
             </div>
             
+            <?php
+            $playLinkGenerator = new PlayLinkGenerator($hasSubscription, $film['tytuł']);
+            $playLink = $playLinkGenerator->getPlayLink();
+            ?>
             <div class="controls">
                 <a 
                     class="play-btn" 
                     target="_blank" 
-                     href="https://www.youtube.com/results?search_query=<?php echo urlencode($film['tytuł'] . ' trailer'); ?>"
-                    > ▶ Play</a>
+                    href="<?php echo $playLink; ?>"
+                > ▶ Play</a>
             </div>
+
         </div>
 
         <div class="right">

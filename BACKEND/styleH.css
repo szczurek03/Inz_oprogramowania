@@ -194,7 +194,7 @@ button[name="refresh_recommendations"]:hover {
     position: absolute;
     top: 10px;
     left: 10px;
-    background-color: #a855f7;
+    background: linear-gradient(135deg, #a855f7, #bd92ff);
     color: #fff;
     border: none;
     padding: 8px 16px;

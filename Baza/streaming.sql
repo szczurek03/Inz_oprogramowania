@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2025 at 02:26 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Generation Time: Cze 14, 2025 at 11:35 AM
+-- Wersja serwera: 10.4.32-MariaDB
+-- Wersja PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,29 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gatunek`
---
-
-CREATE TABLE `gatunek` (
-  `id_gatunek` int(10) NOT NULL,
-  `nazwa_gatunku` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `gatunek`
---
-
-INSERT INTO `gatunek` (`id_gatunek`, `nazwa_gatunku`) VALUES
-(1, 'Drama'),
-(2, 'Thriller'),
-(3, 'Psychologiczny'),
-(4, 'Kryminał'),
-(5, 'Medyczny');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `gatunek2`
+-- Struktura tabeli dla tabeli `gatunek2`
 --
 
 CREATE TABLE `gatunek2` (
@@ -265,7 +243,7 @@ INSERT INTO `gatunek2` (`id_gatunek`, `nazwa_gatunku`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `imdb_top_1000`
+-- Struktura tabeli dla tabeli `imdb_top_1000`
 --
 
 CREATE TABLE `imdb_top_1000` (
@@ -1307,25 +1285,7 @@ INSERT INTO `imdb_top_1000` (`id_treść`, `Poster_Link`, `Series_Title`, `Relea
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategoria_wiekowa`
---
-
-CREATE TABLE `kategoria_wiekowa` (
-  `id_kategoria_wiekowa` int(10) NOT NULL,
-  `nazwa_kategorii_wiekowej` varchar(255) NOT NULL COMMENT '1 = ''7'', 2 = ''PG-13'', 3 = ''R'''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `kategoria_wiekowa`
---
-
-INSERT INTO `kategoria_wiekowa` (`id_kategoria_wiekowa`, `nazwa_kategorii_wiekowej`) VALUES
-(1, 'R');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `kategoria_wiekowa2`
+-- Struktura tabeli dla tabeli `kategoria_wiekowa2`
 --
 
 CREATE TABLE `kategoria_wiekowa2` (
@@ -1359,7 +1319,7 @@ INSERT INTO `kategoria_wiekowa2` (`id_kategoria_wiekowa`, `nazwa_kategorii_wieko
 -- --------------------------------------------------------
 
 --
--- Table structure for table `komentarze`
+-- Struktura tabeli dla tabeli `komentarze`
 --
 
 CREATE TABLE `komentarze` (
@@ -1373,28 +1333,7 @@ CREATE TABLE `komentarze` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kraj`
---
-
-CREATE TABLE `kraj` (
-  `id_kraj` int(10) NOT NULL,
-  `nazwa_kraju` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `kraj`
---
-
-INSERT INTO `kraj` (`id_kraj`, `nazwa_kraju`) VALUES
-(1, 'Polska'),
-(2, 'USA'),
-(3, 'Wielka Brytania'),
-(4, 'Niemcy');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `kraj2`
+-- Struktura tabeli dla tabeli `kraj2`
 --
 
 CREATE TABLE `kraj2` (
@@ -1412,7 +1351,7 @@ INSERT INTO `kraj2` (`id_kraj`, `nazwa_kraju`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nazwa_subskrybcji`
+-- Struktura tabeli dla tabeli `nazwa_subskrybcji`
 --
 
 CREATE TABLE `nazwa_subskrybcji` (
@@ -1432,7 +1371,7 @@ INSERT INTO `nazwa_subskrybcji` (`id_nazwa_subskrybcji`, `nazwa_subskrybcji`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ocena`
+-- Struktura tabeli dla tabeli `ocena`
 --
 
 CREATE TABLE `ocena` (
@@ -1451,7 +1390,7 @@ INSERT INTO `ocena` (`id_like`, `nazwa_oceny`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `oceny`
+-- Struktura tabeli dla tabeli `oceny`
 --
 
 CREATE TABLE `oceny` (
@@ -1479,12 +1418,14 @@ INSERT INTO `oceny` (`id_oceny`, `id_użytkownika`, `id_like`, `data_oceny`, `id
 (42, 10, 1, '2025-06-08', 142),
 (43, 10, 1, '2025-06-08', 721),
 (44, 10, 1, '2025-06-08', 172),
-(45, 10, 1, '2025-06-09', 189);
+(45, 10, 1, '2025-06-09', 189),
+(46, 11, 2, '2025-06-14', 7),
+(47, 11, 1, '2025-06-14', 17);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `playlisty`
+-- Struktura tabeli dla tabeli `playlisty`
 --
 
 CREATE TABLE `playlisty` (
@@ -1504,7 +1445,7 @@ INSERT INTO `playlisty` (`id_playlisty`, `nazwa_playlisty`, `data_utworzenia`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `playlisty_treści`
+-- Struktura tabeli dla tabeli `playlisty_treści`
 --
 
 CREATE TABLE `playlisty_treści` (
@@ -1525,7 +1466,7 @@ INSERT INTO `playlisty_treści` (`id_playlisty`, `id_treść`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `prośby`
+-- Struktura tabeli dla tabeli `prośby`
 --
 
 CREATE TABLE `prośby` (
@@ -1539,7 +1480,7 @@ CREATE TABLE `prośby` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rekomendacje`
+-- Struktura tabeli dla tabeli `rekomendacje`
 --
 
 CREATE TABLE `rekomendacje` (
@@ -1553,16 +1494,6 @@ CREATE TABLE `rekomendacje` (
 --
 
 INSERT INTO `rekomendacje` (`id_rekomendacji`, `id_użytkownika`, `id_treść`) VALUES
-(243, 9, 982),
-(244, 9, 41),
-(245, 9, 942),
-(246, 9, 201),
-(247, 9, 664),
-(248, 9, 43),
-(249, 9, 775),
-(250, 9, 434),
-(251, 9, 275),
-(252, 9, 98),
 (833, 10, 819),
 (834, 10, 189),
 (835, 10, 388),
@@ -1572,580 +1503,22 @@ INSERT INTO `rekomendacje` (`id_rekomendacji`, `id_użytkownika`, `id_treść`) 
 (839, 10, 766),
 (840, 10, 89),
 (841, 10, 389),
-(842, 10, 275);
+(842, 10, 275),
+(933, 9, 887),
+(934, 9, 853),
+(935, 9, 603),
+(936, 9, 41),
+(937, 9, 606),
+(938, 9, 664),
+(939, 9, 657),
+(940, 9, 469),
+(941, 9, 859),
+(942, 9, 98);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reżyser`
---
-
-CREATE TABLE `reżyser` (
-  `id_reżysera` int(10) NOT NULL,
-  `imie_reżysera` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `reżyser`
---
-
-INSERT INTO `reżyser` (`id_reżysera`, `imie_reżysera`) VALUES
-(1, 'David'),
-(2, 'Greg'),
-(3, 'John'),
-(4, 'Frank Darabont'),
-(5, 'Francis Ford Coppola'),
-(6, 'Christopher Nolan'),
-(7, 'Sidney Lumet'),
-(8, 'Peter Jackson'),
-(9, 'Quentin Tarantino'),
-(10, 'Steven Spielberg'),
-(11, 'David Fincher'),
-(12, 'Robert Zemeckis'),
-(13, 'Sergio Leone'),
-(14, 'Lana Wachowski'),
-(15, 'Martin Scorsese'),
-(16, 'Irvin Kershner'),
-(17, 'Milos Forman'),
-(18, 'Thomas Kail'),
-(19, 'Bong Joon Ho'),
-(20, 'Sudha Kongara'),
-(21, 'Fernando Meirelles'),
-(22, 'Hayao Miyazaki'),
-(23, 'Roberto Benigni'),
-(24, 'Jonathan Demme'),
-(25, 'George Lucas'),
-(26, 'Masaki Kobayashi'),
-(27, 'Akira Kurosawa'),
-(28, 'Frank Capra'),
-(29, 'Todd Phillips'),
-(30, 'Damien Chazelle'),
-(31, 'Olivier Nakache'),
-(32, 'Roman Polanski'),
-(33, 'Ridley Scott'),
-(34, 'Tony Kaye'),
-(35, 'Bryan Singer'),
-(36, 'Luc Besson'),
-(37, 'Roger Allers'),
-(38, 'James Cameron'),
-(39, 'Giuseppe Tornatore'),
-(40, 'Isao Takahata'),
-(41, 'Alfred Hitchcock'),
-(42, 'Michael Curtiz'),
-(43, 'Charles Chaplin'),
-(44, 'Nadine Labaki'),
-(45, 'Can Ulkay'),
-(46, 'Gayatri'),
-(47, 'Makoto Shinkai'),
-(48, 'Nitesh Tiwari'),
-(49, 'Bob Persichetti'),
-(50, 'Anthony Russo'),
-(51, 'Lee Unkrich'),
-(52, 'Rajkumar Hirani'),
-(53, 'Aamir Khan'),
-(54, 'Andrew Stanton'),
-(55, 'Florian Henckel von Donnersmarck'),
-(56, 'Chan-wook Park'),
-(57, 'Stanley Kubrick'),
-(58, 'Hrishikesh Mukherjee'),
-(59, 'Billy Wilder'),
-(60, 'Sam Mendes'),
-(61, 'Rahi Anil Barve'),
-(62, 'Sriram Raghavan'),
-(63, 'Jeethu Joseph'),
-(64, 'Thomas Vinterberg'),
-(65, 'Asghar Farhadi'),
-(66, 'Denis Villeneuve'),
-(67, 'Mehmet Ada Öztekin'),
-(68, 'Çagan Irmak'),
-(69, 'Michel Gondry'),
-(70, 'Jean-Pierre Jeunet'),
-(71, 'Guy Ritchie'),
-(72, 'Darren Aronofsky'),
-(73, 'Gus Van Sant'),
-(74, 'Majid Majidi'),
-(75, 'John Lasseter'),
-(76, 'Mel Gibson'),
-(77, 'Elem Klimov'),
-(78, 'Brian De Palma'),
-(79, 'Richard Marquand'),
-(80, 'Wolfgang Petersen'),
-(81, 'George Roy Hill'),
-(82, 'David Lean'),
-(83, 'Stanley Donen'),
-(84, 'Vittorio De Sica'),
-(85, 'Orson Welles'),
-(86, 'Fritz Lang'),
-(87, 'Aditya Dhar'),
-(88, 'Prashanth Neel'),
-(89, 'Peter Farrelly'),
-(90, 'Martin McDonagh'),
-(91, 'Meghna Gulzar'),
-(92, 'S.S. Rajamouli'),
-(93, 'Sergio Pablos'),
-(94, 'Nishikant Kamat'),
-(95, 'Vikas Bahl'),
-(96, 'Zaza Urushadze'),
-(97, 'Rakeysh Omprakash Mehra'),
-(98, 'Anurag Kashyap'),
-(99, 'Vikramaditya Motwane'),
-(100, 'Tigmanshu Dhulia'),
-(101, 'Juan José Campanella'),
-(102, 'Gavin O\'Connor'),
-(103, 'Pete Docter'),
-(104, 'Shimit Amin'),
-(105, 'Paul Thomas Anderson'),
-(106, 'Guillermo del Toro'),
-(107, 'James McTeigue'),
-(108, 'Sanjay Leela Bhansali'),
-(109, 'Ashutosh Gowariker'),
-(110, 'Oliver Hirschbiegel'),
-(111, 'Ron Howard'),
-(112, 'Priyadarshan'),
-(113, 'Curtis Hanson'),
-(114, 'Yavuz Turgul'),
-(115, 'Michael Mann'),
-(116, 'Rajkumar Santoshi'),
-(117, 'Clint Eastwood'),
-(118, 'Emir Kusturica'),
-(119, 'John McTiernan'),
-(120, 'Andrei Tarkovsky'),
-(121, 'Ingmar Bergman'),
-(122, 'Moustapha Akkad'),
-(123, 'Ramesh Sippy'),
-(124, 'Terry Gilliam'),
-(125, 'John Sturges'),
-(126, 'Robert Mulligan'),
-(127, 'Stanley Kramer'),
-(128, 'Jules Dassin'),
-(129, 'Yasujirô Ozu'),
-(130, 'Joseph L. Mankiewicz'),
-(131, 'John Huston'),
-(132, 'Ernst Lubitsch'),
-(133, 'Buster Keaton'),
-(134, 'Céline Sciamma'),
-(135, 'Aniruddha Roy Chowdhury'),
-(136, 'Naoko Yamada'),
-(137, 'Oriol Paulo'),
-(138, 'Xavier Dolan'),
-(139, 'Vishal Bhardwaj'),
-(140, 'James Mangold'),
-(141, 'Lenny Abrahamson'),
-(142, 'Damián Szifron'),
-(143, 'Nuri Bilge Ceylan'),
-(144, 'Umesh Shukla'),
-(145, 'Wes Anderson'),
-(146, 'Mamoru Hosoda'),
-(147, 'Anurag Basu'),
-(148, 'Steve McQueen'),
-(149, 'Tom McCarthy'),
-(150, 'Tomm Moore'),
-(151, 'Sujoy Ghosh'),
-(152, 'Zoya Akhtar'),
-(153, 'George Miller'),
-(154, 'Neeraj Pandey'),
-(155, 'David Yates'),
-(156, 'Yôjirô Takita'),
-(157, 'Lasse Hallström'),
-(158, 'Adam Elliot'),
-(159, 'Dean DeBlois'),
-(160, 'Sean Penn'),
-(161, 'Ethan Coen'),
-(162, 'Terry George'),
-(163, 'Je-kyu Kang'),
-(164, 'Richard Linklater'),
-(165, 'Farhan Akhtar'),
-(166, 'Alejandro G. Iñárritu'),
-(167, 'Hideaki Anno'),
-(168, 'M. Night Shyamalan'),
-(169, 'Peter Weir'),
-(170, 'Joel Coen'),
-(171, 'Kar-Wai Wong'),
-(172, 'Danny Boyle'),
-(173, 'Mathieu Kassovitz'),
-(174, 'Aditya Chopra'),
-(175, 'Krzysztof Kieslowski'),
-(176, 'Jim Sheridan'),
-(177, 'Kaige Chen'),
-(178, 'Yimou Zhang'),
-(179, 'Rob Reiner'),
-(180, 'Oliver Stone'),
-(181, 'Wim Wenders'),
-(182, 'John Carpenter'),
-(183, 'Alan Parker'),
-(184, 'Werner Herzog'),
-(185, 'David Lynch'),
-(186, 'Terry Jones'),
-(187, 'Michael Cimino'),
-(188, 'John G. Avildsen'),
-(189, 'Peter Bogdanovich'),
-(190, 'Jean-Pierre Melville'),
-(191, 'Stuart Rosenberg'),
-(192, 'Gillo Pontecorvo'),
-(193, 'Luis Buñuel'),
-(194, 'Robert Aldrich'),
-(195, 'John Ford'),
-(196, 'François Truffaut'),
-(197, 'William Wyler'),
-(198, 'Federico Fellini'),
-(199, 'Elia Kazan'),
-(200, 'Henri-Georges Clouzot'),
-(201, 'Raoul Walsh'),
-(202, 'Carol Reed'),
-(203, 'Michael Powell'),
-(204, 'Victor Fleming'),
-(205, 'Jean Renoir'),
-(206, 'Carl Theodor Dreyer'),
-(207, 'F.W. Murnau'),
-(208, 'Clyde Bruckman'),
-(209, 'Robert Wiene'),
-(210, 'Amit Ravindernath Sharma'),
-(211, 'Ericson Core'),
-(212, 'Raja Menon'),
-(213, 'Kabir Khan'),
-(214, 'Garth Davis'),
-(215, 'Byron Howard'),
-(216, 'Stephen Chbosky'),
-(217, 'Destin Daniel Cretton'),
-(218, 'Gareth Evans'),
-(219, 'Morten Tyldum'),
-(220, 'James Gunn'),
-(221, 'Spike Jonze'),
-(222, 'José Padilha'),
-(223, 'Tom Hooper'),
-(224, 'Tate Taylor'),
-(225, 'Tim Miller'),
-(226, 'Wilson Yip'),
-(227, 'Karan Johar'),
-(228, 'Levent Semerci'),
-(229, 'Joss Whedon'),
-(230, 'Vincent Paronnaud'),
-(231, 'Jean-Marc Vallée'),
-(232, 'Gabriele Muccino'),
-(233, 'Edward Zwick'),
-(234, 'Paul Greengrass'),
-(235, 'Ki-duk Kim'),
-(236, 'Frank Miller'),
-(237, 'Julian Schnabel'),
-(238, 'Ömer Faruk Sorak'),
-(239, 'Brad Bird'),
-(240, 'Martin Campbell'),
-(241, 'Andrey Zvyagintsev'),
-(242, 'Alejandro Amenábar'),
-(243, 'Nikkhil Advani'),
-(244, 'Andrew Lau'),
-(245, 'Gore Verbinski'),
-(246, 'Tim Burton'),
-(247, 'Jae-young Kwak'),
-(248, 'Lars von Trier'),
-(249, 'Yilmaz Erdogan'),
-(250, 'Richard Kelly'),
-(251, 'Satoshi Kon'),
-(252, 'Walter Salles'),
-(253, 'Thomas Jahn'),
-(254, 'Billy Bob Thornton'),
-(255, 'Mike Leigh'),
-(256, 'Mamoru Oshii'),
-(257, 'Henry Selick'),
-(258, 'Harold Ramis'),
-(259, 'Taylor Hackford'),
-(260, 'Martin Brest'),
-(261, 'Ron Clements'),
-(262, 'Gary Trousdale'),
-(263, 'Kevin Costner'),
-(264, 'Spike Lee'),
-(265, 'Barry Levinson'),
-(266, 'Katsuhiro Ôtomo'),
-(267, 'Louis Malle'),
-(268, 'Richard Attenborough'),
-(269, 'Hal Ashby'),
-(270, 'Woody Allen'),
-(271, 'Mel Brooks'),
-(272, 'Franklin J. Schaffner'),
-(273, 'William Friedkin'),
-(274, 'Norman Jewison'),
-(275, 'Bernardo Bertolucci'),
-(276, 'Mike Nichols'),
-(277, 'Robert Wise'),
-(278, 'Jean-Luc Godard'),
-(279, 'Robert Rossen'),
-(280, 'Howard Hawks'),
-(281, 'Otto Preminger'),
-(282, 'Richard Brooks'),
-(283, 'Alexander Mackendrick'),
-(284, 'Charles Laughton'),
-(285, 'Nicholas Ray'),
-(286, 'Robert Hamer'),
-(287, 'Jacques Tourneur'),
-(288, 'W.S. Van Dyke'),
-(289, 'Lewis Milestone'),
-(290, 'Sergei M. Eisenstein'),
-(291, 'Rian Johnson'),
-(292, 'Mukesh Chhabra'),
-(293, 'Hirokazu Koreeda'),
-(294, 'Noah Baumbach'),
-(295, 'Luca Guadagnino'),
-(296, 'Ken Loach'),
-(297, 'Taika Waititi'),
-(298, 'Matt Ross'),
-(299, 'John Carney'),
-(300, 'Dan Gilroy'),
-(301, 'J.J. Abrams'),
-(302, 'Michel Hazanavicius'),
-(303, 'Doug Liman'),
-(304, 'Michael Haneke'),
-(305, 'Jacques Audiard'),
-(306, 'Duncan Jones'),
-(307, 'Tomas Alfredson'),
-(308, 'Neill Blomkamp'),
-(309, 'Imtiaz Ali'),
-(310, 'Cristian Mungiu'),
-(311, 'Richard Schenkman'),
-(312, 'Tarsem Singh'),
-(313, 'Ang Lee'),
-(314, 'Christophe Barratier'),
-(315, 'Jon Favreau'),
-(316, 'Edgar Wright'),
-(317, 'Fatih Akin'),
-(318, 'Alfonso Cuarón'),
-(319, 'Pedro Almodóvar'),
-(320, 'Danis Tanovic'),
-(321, 'Shin\'ichirô Watanabe'),
-(322, 'Fabián Bielinsky'),
-(323, 'Cameron Crowe'),
-(324, 'Yoshifumi Kondô'),
-(325, 'Lee Tamahori'),
-(326, 'Tony Scott'),
-(327, 'Yoshiaki Kawajiri'),
-(328, 'Bob Clark'),
-(329, 'John Landis'),
-(330, 'Bob Fosse'),
-(331, 'George A. Romero'),
-(332, 'Alan J. Pakula'),
-(333, 'Alejandro Jodorowsky'),
-(334, 'Sam Peckinpah'),
-(335, 'Anthony Harvey'),
-(336, 'John Frankenheimer'),
-(337, 'Michelangelo Antonioni'),
-(338, 'Alain Resnais'),
-(339, 'Cecil B. DeMille'),
-(340, 'Fred Zinnemann'),
-(341, 'Henry Koster'),
-(342, 'George Seaton'),
-(343, 'George Cukor'),
-(344, 'Sam Wood'),
-(345, 'Merian C. Cooper'),
-(346, 'Tod Browning'),
-(347, 'Darius Marder'),
-(348, 'Paolo Genovese'),
-(349, 'Theodore Melfi'),
-(350, 'Paul King'),
-(351, 'Abhishek Chaubey'),
-(352, 'Travis Knight'),
-(353, 'Kenneth Lonergan'),
-(354, 'Martin Zandvliet'),
-(355, 'Gareth Edwards'),
-(356, 'Greta Gerwig'),
-(357, 'Dorota Kobiela'),
-(358, 'Matthew Warchus'),
-(359, 'Paolo Sorrentino'),
-(360, 'Ritesh Batra'),
-(361, 'Shoojit Sircar'),
-(362, 'Don Hall'),
-(363, 'Richard Curtis'),
-(364, 'Gauri Shinde'),
-(365, 'Josh Cooley'),
-(366, 'Adam McKay'),
-(367, 'Tetsuya Nakashima'),
-(368, 'Jee-woon Kim'),
-(369, 'Jeong-beom Lee'),
-(370, 'F. Gary Gray'),
-(371, 'Hong-jin Na'),
-(372, 'Niels Arden Oplev'),
-(373, 'Aaron Sorkin'),
-(374, 'David O. Russell'),
-(375, 'Pierre Morel'),
-(376, 'Mark Herman'),
-(377, 'Joe Wright'),
-(378, 'Nicolas Winding Refn'),
-(379, 'Jaco Van Dormael'),
-(380, 'Jonathan Dayton'),
-(381, 'Yash Chopra'),
-(382, 'Anders Thomas Jensen'),
-(383, 'Roger Donaldson'),
-(384, 'Mikael Håfström'),
-(385, 'Nick Cassavetes'),
-(386, 'Lukas Moodysson'),
-(387, 'Sylvain Chomet'),
-(388, 'Kevin Reynolds'),
-(389, 'Boaz Yakin'),
-(390, 'Troy Duffy'),
-(391, 'Joe Johnston'),
-(392, 'Andrew Adamson'),
-(393, 'Takeshi Kitano'),
-(394, 'Andrew Niccol'),
-(395, 'George P. Cosmatos'),
-(396, 'David Mickey Evans'),
-(397, 'James Ivory'),
-(398, 'Andrew Davis'),
-(399, 'Robert De Niro'),
-(400, 'Kevin Altieri'),
-(401, 'John Woo'),
-(402, 'Jim Jarmusch'),
-(403, 'John Singleton'),
-(404, 'Penny Marshall'),
-(405, 'Sam Raimi'),
-(406, 'John Hughes'),
-(407, 'Richard Donner'),
-(408, 'Roland Joffé'),
-(409, 'Ivan Reitman'),
-(410, 'Philip Kaufman'),
-(411, 'Robert Benton'),
-(412, 'Terrence Malick'),
-(413, 'René Laloux'),
-(414, 'Mel Stuart'),
-(415, 'John Schlesinger'),
-(416, 'Terence Young'),
-(417, 'Arthur Penn'),
-(418, 'Robert Stevenson'),
-(419, 'Ken Annakin'),
-(420, 'Jack Clayton'),
-(421, 'James Whale'),
-(422, 'Leo McCarey'),
-(423, 'Francis Lee'),
-(424, 'David Leitch'),
-(425, 'Taylor Sheridan'),
-(426, 'Jordan Peele'),
-(427, 'Christopher McQuarrie'),
-(428, 'Hannes Holm'),
-(429, 'Jemaine Clement'),
-(430, 'James Simone'),
-(431, 'James Marsh'),
-(432, 'Matthew Vaughn'),
-(433, 'Josh Boone'),
-(434, 'Alfonso Gomez-Rejon'),
-(435, 'Abdellatif Kechiche'),
-(436, 'Abhishek Kapoor'),
-(437, 'Felix van Groeningen'),
-(438, 'Alexander Payne'),
-(439, 'Rich Moore'),
-(440, 'Mark Osborne'),
-(441, 'Christopher Miller'),
-(442, 'Cary Joji Fukunaga'),
-(443, 'Ben Affleck'),
-(444, 'Marc Webb'),
-(445, 'Shûsuke Kaneko'),
-(446, 'Shane Meadows'),
-(447, 'Alex Garland'),
-(448, 'Susanne Bier'),
-(449, 'Kevin Macdonald'),
-(450, 'Paul McGuigan'),
-(451, 'Christian Carion'),
-(452, 'Anton Corbijn'),
-(453, 'Nathan Greno'),
-(454, 'Paul Verhoeven'),
-(455, 'Paul Haggis'),
-(456, 'Stephen Chow'),
-(457, 'Brad Anderson'),
-(458, 'Sofia Coppola'),
-(459, 'Mike Newell'),
-(460, 'Peter Mullan'),
-(461, 'Wolfgang Becker'),
-(462, 'Jessie Nelson'),
-(463, 'Stephen Daldry'),
-(464, 'John Cameron Mitchell'),
-(465, 'Steven Soderbergh'),
-(466, 'Bob Gale'),
-(467, 'Trey Parker'),
-(468, 'Mike Judge'),
-(469, 'Todd Solondz'),
-(470, 'Antoine Fuqua'),
-(471, 'James L. Brooks'),
-(472, 'Francis Veber'),
-(473, 'Scott Hicks'),
-(474, 'Gregory Hoblit'),
-(475, 'Kenneth Branagh'),
-(476, 'Michael Radford'),
-(477, 'Kevin Smith'),
-(478, 'Robert Altman'),
-(479, 'Brian Henson'),
-(480, 'James Foley'),
-(481, 'Jon Avnet'),
-(482, 'George Sluizer'),
-(483, 'Bruce Robinson'),
-(484, 'Jean-Jacques Annaud'),
-(485, 'Nicholas Meyer'),
-(486, 'Ted Kotcheff'),
-(487, 'Robert Redford'),
-(488, 'Jim Abrahams'),
-(489, 'Joseph Sargent'),
-(490, 'Robert Clouse'),
-(491, 'John Boorman'),
-(492, 'Don Siegel'),
-(493, 'Brian G. Hutton'),
-(494, 'Gene Saks'),
-(495, 'Cy Endfield'),
-(496, 'Guy Hamilton'),
-(497, 'J. Lee Thompson'),
-(498, 'Georges Franju'),
-(499, 'Charles Vidor'),
-(500, 'James Algar'),
-(501, 'Todd Haynes'),
-(502, 'Aneesh Chaganty'),
-(503, 'Sean Baker'),
-(504, 'Tyler Nilson'),
-(505, 'Sebastian Schipper'),
-(506, 'Deniz Gamze Ergüven'),
-(507, 'Joseph Kosinski'),
-(508, 'Ryan Coogler'),
-(509, 'David Mackenzie'),
-(510, 'Stephen Frears'),
-(511, 'Matt Reeves'),
-(512, 'David Ayer'),
-(513, 'Hiromasa Yonebayashi'),
-(514, 'Bradley Cooper'),
-(515, 'Pierre Coffin'),
-(516, 'Jonathan Levine'),
-(517, 'Daniel Monzón'),
-(518, 'Bennett Miller'),
-(519, 'Ruben Fleischer'),
-(520, 'Dennis Gansel'),
-(521, 'John Lee Hancock'),
-(522, 'David Cronenberg'),
-(523, 'Olivier Dahan'),
-(524, 'Ronny Yu'),
-(525, 'Neil Burger'),
-(526, 'Zack Snyder'),
-(527, 'James Wan'),
-(528, 'Charlie Kaufman'),
-(529, 'Gregg Araki'),
-(530, 'Yann Samuell'),
-(531, 'Marc Forster'),
-(532, 'Eric Bress'),
-(533, 'Kinji Fukasaku'),
-(534, 'Chris Columbus'),
-(535, 'Ted Demme'),
-(536, 'Mary Harron'),
-(537, 'Tom Tykwer'),
-(538, 'Tony Bancroft'),
-(539, 'Alex Proyas'),
-(540, 'Joel Schumacher'),
-(541, 'Jonathan Lynn'),
-(542, 'Marc Caro'),
-(543, 'David Zucker'),
-(544, 'Mark Rydell'),
-(545, 'Walter Hill'),
-(546, 'James Frawley'),
-(547, 'Martin Rosen'),
-(548, 'Wolfgang Reitherman'),
-(549, 'Richard Lester'),
-(550, 'Blake Edwards'),
-(551, 'George Stevens');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `reżyser2`
+-- Struktura tabeli dla tabeli `reżyser2`
 --
 
 CREATE TABLE `reżyser2` (
@@ -2710,7 +2083,7 @@ INSERT INTO `reżyser2` (`id_reżysera`, `imie_reżysera`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `status_prośby`
+-- Struktura tabeli dla tabeli `status_prośby`
 --
 
 CREATE TABLE `status_prośby` (
@@ -2721,7 +2094,7 @@ CREATE TABLE `status_prośby` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subskrybcja`
+-- Struktura tabeli dla tabeli `subskrybcja`
 --
 
 CREATE TABLE `subskrybcja` (
@@ -2781,44 +2154,27 @@ INSERT INTO `subskrybcja` (`id_subskrybcji`, `id_nazwa_subskrybcji`, `data_rozpo
 (43, 1, '0000-00-00', '2025-06-09', 0, 0),
 (44, 1, '0000-00-00', '2025-06-09', 0, 0),
 (45, 3, '0000-00-00', '2025-07-09', 59.99, 1),
-(46, 3, '0000-00-00', '2025-07-09', 59.99, 1);
+(46, 3, '0000-00-00', '2025-07-09', 59.99, 1),
+(47, 3, '0000-00-00', '2025-07-14', 59.99, 1),
+(48, 1, '0000-00-00', '2025-06-14', 0, 0),
+(49, 1, '0000-00-00', '2025-06-14', 0, 0),
+(50, 2, '0000-00-00', '2025-07-14', 39.99, 1),
+(51, 1, '0000-00-00', '2025-06-14', 0, 0),
+(52, 3, '0000-00-00', '2025-07-14', 59.99, 1),
+(53, 1, '0000-00-00', '2025-06-14', 0, 0),
+(54, 2, '0000-00-00', '2025-07-14', 39.99, 1),
+(55, 1, '0000-00-00', '2025-06-14', 0, 0),
+(56, 1, '0000-00-00', '2025-06-14', 0, 0),
+(57, 1, '0000-00-00', '2025-06-14', 0, 0),
+(58, 3, '0000-00-00', '2025-07-14', 59.99, 1),
+(59, 1, '0000-00-00', '2025-06-14', 0, 0),
+(60, 2, '0000-00-00', '2025-07-14', 39.99, 1),
+(61, 1, '0000-00-00', '2025-06-14', 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `treść`
---
-
-CREATE TABLE `treść` (
-  `id_tresc` int(10) NOT NULL,
-  `tytuł` varchar(255) NOT NULL,
-  `opis` varchar(255) NOT NULL,
-  `rok_wydania` int(4) NOT NULL,
-  `data_dodania` date NOT NULL,
-  `id_reżysera` int(10) NOT NULL,
-  `id_kraj` int(10) NOT NULL,
-  `id_kategoria_wiekowa` int(10) NOT NULL,
-  `id_gatunek` int(10) NOT NULL,
-  `długość` varchar(10) NOT NULL,
-  `img_glowne` varchar(255) DEFAULT NULL,
-  `img_mini` varchar(255) DEFAULT NULL,
-  `typ` enum('film','serial') NOT NULL DEFAULT 'film'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `treść`
---
-
-INSERT INTO `treść` (`id_tresc`, `tytuł`, `opis`, `rok_wydania`, `data_dodania`, `id_reżysera`, `id_kraj`, `id_kategoria_wiekowa`, `id_gatunek`, `długość`, `img_glowne`, `img_mini`, `typ`) VALUES
-(1, 'Fight Club', 'Cierpiący na bezsenność mężczyzna poznaje gardzącego konsumpcyjnym stylem życia Tylera Durdena, który jest jego zupełnym przeciwieństwem.', 1999, '2025-06-01', 1, 2, 1, 1, '139', NULL, 'miniaturki/fight.png', 'film'),
-(2, 'Siedem', 'Dwóch policjantów stara się złapać seryjnego mordercę wybierającego swoje ofiary według specjalnego klucza - siedmiu grzechów głównych.', 1995, '2025-06-01', 1, 2, 1, 2, '127', NULL, 'miniaturki/seven.png', 'film'),
-(3, 'Dr House', 'Grupa lekarzy na czele z charyzmatycznym, acz aspołecznym doktorem Housem diagnozuje nietypowe choroby, niejednokrotnie ratując życie pacjentom.', 2004, '2025-06-01', 2, 2, 1, 5, '44', NULL, 'miniaturki/house.png', 'serial'),
-(4, 'Dexter', 'Dexter prowadzi podwójne życie. Za dnia jest cenionym specjalistą ds. krwi w departamencie policji, a nocą zabija złoczyńców, którzy wymykają się organom sprawiedliwości.', 2006, '2025-06-01', 3, 2, 1, 4, '53', NULL, 'miniaturki/dex.png', 'serial');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `treść2`
+-- Struktura tabeli dla tabeli `treść2`
 --
 
 CREATE TABLE `treść2` (
@@ -3852,7 +3208,7 @@ INSERT INTO `treść2` (`id_tresc`, `tytuł`, `opis`, `rok_wydania`, `data_dodan
 -- --------------------------------------------------------
 
 --
--- Table structure for table `treść_gatunek`
+-- Struktura tabeli dla tabeli `treść_gatunek`
 --
 
 CREATE TABLE `treść_gatunek` (
@@ -3877,7 +3233,7 @@ INSERT INTO `treść_gatunek` (`id_treść`, `id_gatunek`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `użytkownicy`
+-- Struktura tabeli dla tabeli `użytkownicy`
 --
 
 CREATE TABLE `użytkownicy` (
@@ -3898,12 +3254,13 @@ INSERT INTO `użytkownicy` (`id_użytkownika`, `nazwa_użytkownika`, `email`, `h
 (7, 'DupaDupa', 'dupa@wp.pl', '$2y$10$BHN9GcAawBzlovgVCjewaOH1R7kbp7DcQ4qnqcMCO.y4GHWRPWXe.', 1, '2025-06-01'),
 (8, 'szx87043', 'Matixpod@gmail.com', '$2y$10$fxTylYDTDQaFRlC1xOLaGuHrDzMBzcYooE83SuMd6hosFeQAyiZ0C', 1, '2025-06-08'),
 (9, 'kk55613', 'klaudiakrawiec2003@gmail.com', '$2y$10$Y95jx/qyiXaJxJ8LU/1TR.PIrjCjnCnH7YEeJ5L71mJJ8Sko0qBVO', 1, '2025-06-08'),
-(10, 'test1', 'test1@wp.pl', '$2y$10$r3.gFuyKSPizsquJrRzEQe/Sj0gA7lp65hORNt0eM.5BPXYdmct9O', 46, '2025-06-08');
+(10, 'test1', 'test1@wp.pl', '$2y$10$r3.gFuyKSPizsquJrRzEQe/Sj0gA7lp65hORNt0eM.5BPXYdmct9O', 46, '2025-06-08'),
+(11, 'ala', 'ala@gmail.com', '$2y$10$CkjuIw4m6Ho18kgcxSntWeF/kvsjHp5YjAEeXFiqTtay5O5LXmE16', 61, '2025-06-14');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `użytkownicy_pracownicy`
+-- Struktura tabeli dla tabeli `użytkownicy_pracownicy`
 --
 
 CREATE TABLE `użytkownicy_pracownicy` (
@@ -3915,72 +3272,54 @@ CREATE TABLE `użytkownicy_pracownicy` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Indexes for dumped tables
+-- Indeksy dla zrzutów tabel
 --
 
 --
--- Indexes for table `gatunek`
---
-ALTER TABLE `gatunek`
-  ADD PRIMARY KEY (`id_gatunek`);
-
---
--- Indexes for table `gatunek2`
+-- Indeksy dla tabeli `gatunek2`
 --
 ALTER TABLE `gatunek2`
   ADD PRIMARY KEY (`id_gatunek`);
 
 --
--- Indexes for table `imdb_top_1000`
+-- Indeksy dla tabeli `imdb_top_1000`
 --
 ALTER TABLE `imdb_top_1000`
   ADD PRIMARY KEY (`id_treść`);
 
 --
--- Indexes for table `kategoria_wiekowa`
---
-ALTER TABLE `kategoria_wiekowa`
-  ADD PRIMARY KEY (`id_kategoria_wiekowa`);
-
---
--- Indexes for table `kategoria_wiekowa2`
+-- Indeksy dla tabeli `kategoria_wiekowa2`
 --
 ALTER TABLE `kategoria_wiekowa2`
   ADD PRIMARY KEY (`id_kategoria_wiekowa`);
 
 --
--- Indexes for table `komentarze`
+-- Indeksy dla tabeli `komentarze`
 --
 ALTER TABLE `komentarze`
   ADD PRIMARY KEY (`id_komentarza`),
   ADD KEY `FKKomentarze786489` (`id_użytkownika`);
 
 --
--- Indexes for table `kraj`
---
-ALTER TABLE `kraj`
-  ADD PRIMARY KEY (`id_kraj`);
-
---
--- Indexes for table `kraj2`
+-- Indeksy dla tabeli `kraj2`
 --
 ALTER TABLE `kraj2`
   ADD PRIMARY KEY (`id_kraj`);
 
 --
--- Indexes for table `nazwa_subskrybcji`
+-- Indeksy dla tabeli `nazwa_subskrybcji`
 --
 ALTER TABLE `nazwa_subskrybcji`
   ADD PRIMARY KEY (`id_nazwa_subskrybcji`);
 
 --
--- Indexes for table `ocena`
+-- Indeksy dla tabeli `ocena`
 --
 ALTER TABLE `ocena`
   ADD PRIMARY KEY (`id_like`);
 
 --
--- Indexes for table `oceny`
+-- Indeksy dla tabeli `oceny`
 --
 ALTER TABLE `oceny`
   ADD PRIMARY KEY (`id_oceny`),
@@ -3989,21 +3328,21 @@ ALTER TABLE `oceny`
   ADD KEY `FKOceny797359` (`id_like`);
 
 --
--- Indexes for table `playlisty`
+-- Indeksy dla tabeli `playlisty`
 --
 ALTER TABLE `playlisty`
   ADD PRIMARY KEY (`id_playlisty`),
   ADD KEY `FKPlaylisty145396` (`id_użytkownika`);
 
 --
--- Indexes for table `playlisty_treści`
+-- Indeksy dla tabeli `playlisty_treści`
 --
 ALTER TABLE `playlisty_treści`
   ADD PRIMARY KEY (`id_playlisty`,`id_treść`) USING BTREE,
   ADD KEY `FKPlaylisty_104558` (`id_treść`);
 
 --
--- Indexes for table `prośby`
+-- Indeksy dla tabeli `prośby`
 --
 ALTER TABLE `prośby`
   ADD PRIMARY KEY (`id_prośby`),
@@ -4011,7 +3350,7 @@ ALTER TABLE `prośby`
   ADD KEY `FKProśby816653` (`id_status_prośby`);
 
 --
--- Indexes for table `rekomendacje`
+-- Indeksy dla tabeli `rekomendacje`
 --
 ALTER TABLE `rekomendacje`
   ADD PRIMARY KEY (`id_rekomendacji`),
@@ -4019,42 +3358,26 @@ ALTER TABLE `rekomendacje`
   ADD KEY `FKRekomendac171056` (`id_treść`);
 
 --
--- Indexes for table `reżyser`
---
-ALTER TABLE `reżyser`
-  ADD PRIMARY KEY (`id_reżysera`);
-
---
--- Indexes for table `reżyser2`
+-- Indeksy dla tabeli `reżyser2`
 --
 ALTER TABLE `reżyser2`
   ADD PRIMARY KEY (`id_reżysera`);
 
 --
--- Indexes for table `status_prośby`
+-- Indeksy dla tabeli `status_prośby`
 --
 ALTER TABLE `status_prośby`
   ADD PRIMARY KEY (`id_status_prośby`);
 
 --
--- Indexes for table `subskrybcja`
+-- Indeksy dla tabeli `subskrybcja`
 --
 ALTER TABLE `subskrybcja`
   ADD PRIMARY KEY (`id_subskrybcji`),
   ADD KEY `FKSubskrybcj736405` (`id_nazwa_subskrybcji`);
 
 --
--- Indexes for table `treść`
---
-ALTER TABLE `treść`
-  ADD PRIMARY KEY (`id_tresc`),
-  ADD KEY `FKTreść429407` (`id_kraj`),
-  ADD KEY `FKTreść44637` (`id_kategoria_wiekowa`),
-  ADD KEY `FKTreść509063` (`id_gatunek`),
-  ADD KEY `FKTreść294769` (`id_reżysera`);
-
---
--- Indexes for table `treść2`
+-- Indeksy dla tabeli `treść2`
 --
 ALTER TABLE `treść2`
   ADD PRIMARY KEY (`id_tresc`),
@@ -4064,20 +3387,20 @@ ALTER TABLE `treść2`
   ADD KEY `id_gatunek` (`id_gatunek`);
 
 --
--- Indexes for table `treść_gatunek`
+-- Indeksy dla tabeli `treść_gatunek`
 --
 ALTER TABLE `treść_gatunek`
   ADD KEY `FKTreść_gatu826010` (`id_gatunek`),
   ADD KEY `FKTreść_gatu732026` (`id_treść`);
 
 --
--- Indexes for table `użytkownicy`
+-- Indeksy dla tabeli `użytkownicy`
 --
 ALTER TABLE `użytkownicy`
   ADD PRIMARY KEY (`id_użytkownika`);
 
 --
--- Indexes for table `użytkownicy_pracownicy`
+-- Indeksy dla tabeli `użytkownicy_pracownicy`
 --
 ALTER TABLE `użytkownicy_pracownicy`
   ADD PRIMARY KEY (`id_użytkownika`);
@@ -4085,12 +3408,6 @@ ALTER TABLE `użytkownicy_pracownicy`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `gatunek`
---
-ALTER TABLE `gatunek`
-  MODIFY `id_gatunek` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `gatunek2`
@@ -4105,12 +3422,6 @@ ALTER TABLE `imdb_top_1000`
   MODIFY `id_treść` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
 
 --
--- AUTO_INCREMENT for table `kategoria_wiekowa`
---
-ALTER TABLE `kategoria_wiekowa`
-  MODIFY `id_kategoria_wiekowa` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `kategoria_wiekowa2`
 --
 ALTER TABLE `kategoria_wiekowa2`
@@ -4121,12 +3432,6 @@ ALTER TABLE `kategoria_wiekowa2`
 --
 ALTER TABLE `komentarze`
   MODIFY `id_komentarza` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `kraj`
---
-ALTER TABLE `kraj`
-  MODIFY `id_kraj` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `kraj2`
@@ -4150,7 +3455,7 @@ ALTER TABLE `ocena`
 -- AUTO_INCREMENT for table `oceny`
 --
 ALTER TABLE `oceny`
-  MODIFY `id_oceny` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_oceny` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `playlisty`
@@ -4168,13 +3473,7 @@ ALTER TABLE `prośby`
 -- AUTO_INCREMENT for table `rekomendacje`
 --
 ALTER TABLE `rekomendacje`
-  MODIFY `id_rekomendacji` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=843;
-
---
--- AUTO_INCREMENT for table `reżyser`
---
-ALTER TABLE `reżyser`
-  MODIFY `id_reżysera` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1027;
+  MODIFY `id_rekomendacji` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=953;
 
 --
 -- AUTO_INCREMENT for table `reżyser2`
@@ -4192,19 +3491,13 @@ ALTER TABLE `status_prośby`
 -- AUTO_INCREMENT for table `subskrybcja`
 --
 ALTER TABLE `subskrybcja`
-  MODIFY `id_subskrybcji` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
-
---
--- AUTO_INCREMENT for table `treść`
---
-ALTER TABLE `treść`
-  MODIFY `id_tresc` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_subskrybcji` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `użytkownicy`
 --
 ALTER TABLE `użytkownicy`
-  MODIFY `id_użytkownika` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_użytkownika` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `użytkownicy_pracownicy`
@@ -4240,8 +3533,8 @@ ALTER TABLE `playlisty`
 -- Constraints for table `playlisty_treści`
 --
 ALTER TABLE `playlisty_treści`
-  ADD CONSTRAINT `FKPlaylisty_104558` FOREIGN KEY (`id_treść`) REFERENCES `treść` (`id_tresc`),
-  ADD CONSTRAINT `FKPlaylisty_663861` FOREIGN KEY (`id_playlisty`) REFERENCES `playlisty` (`id_playlisty`);
+  ADD CONSTRAINT `FKPlaylisty_663861` FOREIGN KEY (`id_playlisty`) REFERENCES `playlisty` (`id_playlisty`),
+  ADD CONSTRAINT `FKPlaylisty_tresc2` FOREIGN KEY (`id_treść`) REFERENCES `treść2` (`id_tresc`);
 
 --
 -- Constraints for table `prośby`
@@ -4264,15 +3557,6 @@ ALTER TABLE `subskrybcja`
   ADD CONSTRAINT `FKSubskrybcj736405` FOREIGN KEY (`id_nazwa_subskrybcji`) REFERENCES `nazwa_subskrybcji` (`id_nazwa_subskrybcji`);
 
 --
--- Constraints for table `treść`
---
-ALTER TABLE `treść`
-  ADD CONSTRAINT `FKTreść294769` FOREIGN KEY (`id_reżysera`) REFERENCES `reżyser` (`id_reżysera`),
-  ADD CONSTRAINT `FKTreść429407` FOREIGN KEY (`id_kraj`) REFERENCES `kraj` (`id_kraj`),
-  ADD CONSTRAINT `FKTreść44637` FOREIGN KEY (`id_kategoria_wiekowa`) REFERENCES `kategoria_wiekowa` (`id_kategoria_wiekowa`),
-  ADD CONSTRAINT `FKTreść509063` FOREIGN KEY (`id_gatunek`) REFERENCES `gatunek` (`id_gatunek`);
-
---
 -- Constraints for table `treść2`
 --
 ALTER TABLE `treść2`
@@ -4285,8 +3569,8 @@ ALTER TABLE `treść2`
 -- Constraints for table `treść_gatunek`
 --
 ALTER TABLE `treść_gatunek`
-  ADD CONSTRAINT `FKTreść_gatu732026` FOREIGN KEY (`id_treść`) REFERENCES `treść` (`id_tresc`),
-  ADD CONSTRAINT `FKTreść_gatu826010` FOREIGN KEY (`id_gatunek`) REFERENCES `gatunek` (`id_gatunek`);
+  ADD CONSTRAINT `FKTreść_gatu732026` FOREIGN KEY (`id_treść`) REFERENCES `treść2` (`id_tresc`),
+  ADD CONSTRAINT `FKTreść_gatu826010` FOREIGN KEY (`id_gatunek`) REFERENCES `gatunek2` (`id_gatunek`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

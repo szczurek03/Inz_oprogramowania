@@ -22,7 +22,7 @@ body {
     align-items: center;
 }
 .back-btn:hover {
-    background-color:  rgb(130, 42, 145); 
+    background: linear-gradient(135deg, #a855f7, #bd92ff);
 }
 .back-btn i {
     font-size: 14px;

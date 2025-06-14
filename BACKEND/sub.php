@@ -29,7 +29,7 @@ require_once "loginconnect.php";
 </head>
 <body>
     <a href="settings.php" class="back-btn" data-i18n="back" title="Powrót">
-        <i class="fas fa-arrow-left"></i> Powrót
+        <i class="fas fa-arrow-left"></i>
     </a>
     <header>
         <img src="logo.png" alt="Streamflix Logo" class="logo" />
