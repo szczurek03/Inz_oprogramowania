@@ -1,13 +1,12 @@
 <?php
 session_start();
-//jezeli user_id sesji nie istnieje przekierowywuje spowrotem na strone logowania
+
 $user_id = $_SESSION['user_id'] ?? null;
 if ($user_id === null) {
     header('Location: loginSite.php');
     exit;
 }
 
-//Dane wrazliwe - nie przechowujemy w cache
 header('Cache-Control: no-cache, no-store, must-revalidate');
 header('Pragma: no-cache');
 header('Expires: 0');
@@ -19,7 +18,6 @@ if (!isset($_SESSION['email']) && isset($_COOKIE['user_email'])) {
 require_once "loginconnect.php";
 
 
-//pobiera dane subskyrpcji dla danego uzytkownika
 $stmt = $conn->prepare("
     SELECT ns.nazwa_subskrybcji as nazwa, s.data_zakończenia, s.cena, s.aktywny as status
     FROM użytkownicy u
@@ -51,7 +49,7 @@ if ($row = $result->fetch_assoc()) {
     $subscription['status'] = $row['status'];
 
     $end_date = new DateTime($row['data_zakończenia']);
-    $today = new DateTime('2025-06-09'); 
+    $today = new DateTime(); 
     $interval = $today->diff($end_date);
     $remaining_days = $interval->days;
     if ($today > $end_date) {
@@ -65,6 +63,18 @@ if ($row = $result->fetch_assoc()) {
 }
 $stmt->close();
 
+$stmt = $conn->prepare("SELECT czy_pracownik FROM użytkownicy WHERE id_użytkownika = ?");
+if (!$stmt) {
+    die("Błąd SQL: " . $conn->error);
+}
+$stmt->bind_param("s", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$czy_pracownik = 0;
+if ($row = $result->fetch_assoc()) {
+    $czy_pracownik = $row['czy_pracownik'];
+}
+$stmt->close();
 ?>
 
 <!DOCTYPE html>
@@ -97,7 +107,7 @@ $stmt->close();
 
     <div class="settings-container">
         <h1 data-i18n="settings">Ustawienia <span>Streamflix</span></h1>
-        <div class="subtitle" data-i18n="manage-subscription">Zarządzaj subskrypcją</div>
+        <div class="subtitle" data-i18n="manage-subscription">Zarządzaj ustawieniami</div>
 
         <div class="plan-set">
             <p>Twoja subskrypcja: <strong><?php echo htmlspecialchars($subscription['nazwa']); ?></strong></p>
@@ -113,7 +123,13 @@ $stmt->close();
             </form>
             <?php endif; ?>
 
-        <a href="sub.php" class="upgrade-link" >Przejdź do strony zakupu!</a>
+       <button class="gray-button" onclick="window.location.href='sub.php'">Przejdź do strony zakupu!</button>
+       <br>
+       <button class="gray-button" onclick="window.location.href='request.php'">Przejdź do próśb!</button>
+       <br>
+       <?php if ($czy_pracownik == 1): ?>
+            <button class="gray-button" onclick="window.location.href='menagereq.php'">Zarządzaj prośbami</button>
+        <?php endif; ?>
 
         <div class="plans">
                 <span class="plan-icon smile"></span>

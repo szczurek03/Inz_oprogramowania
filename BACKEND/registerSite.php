@@ -15,7 +15,7 @@
     </div>
 
     <div class="container">
-        <h1 class="logo">STREAMFLIX</h1>
+        <img src="logo.png" alt="Streamflix Logo" class="logo" />
         <div class="login-box">
             <h2 data-i18n="registerTitle">Rejestracja</h2>
             <?php
