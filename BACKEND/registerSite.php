@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styleRL.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styleRL.css" />
     <title>Streamflix - rejestracja</title>
 </head>
 <body>
+    <!-- selektor języka -->
     <div class="language-selector">
         <select id="language">
             <option value="pl">Polski</option>
@@ -18,6 +19,8 @@
         <h1 class="logo">STREAMFLIX</h1>
         <div class="login-box">
             <h2 data-i18n="registerTitle">Rejestracja</h2>
+
+            <!-- obsługa komunikatów sesyjnych (błędy i sukcesy) -->
             <?php
             session_start();
             if (isset($_SESSION['error'])) {
@@ -29,6 +32,8 @@
                 unset($_SESSION['success']);
             }
             ?>
+
+            <!-- formularz rejestracji -->
             <form id="registerForm" action="register.php" method="post">
                 <label for="email" data-i18n="email">Email</label>
                 <input type="email" id="email" name="email" required />
@@ -43,7 +48,6 @@
                 <input type="password" id="confirmPassword" name="confirmPassword" required />
 
                 <label for="country" data-i18n="country">Kraj</label>
-
                 <div class="select-country">
                     <select id="country" name="country" required>
                         <option value="pl" data-flag="PL">Polska</option>
@@ -56,12 +60,17 @@
                 </div>
 
                 <button type="submit" data-i18n="registerButton">Zarejestruj się</button>
+
+                <!-- link do logowania -->
                 <p class="link">
-                <span data-i18n="toLogin">Masz już konto?</span> <a href="loginSite.php">Zaloguj się</a>
+                    <span data-i18n="toLogin">Masz już konto?</span>
+                    <a href="loginSite.php">Zaloguj się</a>
                 </p>
             </form>
         </div>
     </div>
+
+    <!-- obsługa dynamicznej zmiany języka i flagi -->
     <script src="scriptRL.js"></script>
 </body>
 </html>

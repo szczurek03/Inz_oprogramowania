@@ -1,36 +1,22 @@
-
-<?php
-session_start();
-$user_id = $_SESSION['user_id'] ?? null;
-if ($user_id === null) {
-    header('Location: loginSite.php');
-    exit;
-}
-
-header('Cache-Control: no-cache, no-store, must-revalidate');
-header('Pragma: no-cache');
-header('Expires: 0');
-
-if (!isset($_SESSION['email']) && isset($_COOKIE['user_email'])) {
-    $_SESSION['email'] = $_COOKIE['user_email'];   
-}
-
-require_once "loginconnect.php";
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel subskrypcji</title>
+
+    <!-- style -->
     <link rel="stylesheet" href="styleH.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <title>Panel subskrypcji</title>
 </head>
 <body>
+
+    <!-- przycisk powrotu -->
     <a href="settings.php" class="back-btn" data-i18n="back" title="Powrót">
         <i class="fas fa-arrow-left"></i>
     </a>
+
+    <!-- nagłówek z logo i informacjami o użytkowniku -->
     <header>
         <img src="logo.png" alt="Streamflix Logo" class="logo" />
         <div class="user-info">
@@ -45,19 +31,26 @@ require_once "loginconnect.php";
         </div>
     </header>
 
+    <!-- nagłówek strony subskrypcji -->
     <h1 data-i18n="subscription">Subskrypcja <span>Streamflix</span></h1>
-    <div class="subtitle" data-i18n="purchase-subscription"><span>Zakup subskrypcję</span></div>
+    <div class="subtitle" data-i18n="purchase-subscription">
+        <span>Zakup subskrypcję</span>
+    </div>
 
+    <!-- wybór planów subskrypcji -->
     <div class="plans">
+        <!-- plan regular -->
         <div class="plan-choice">
             <h2 data-i18n="regular-plan">Regular</h2>
             <span class="plan-icon smile"></span>
             <div class="price" data-i18n="regular-price">39.99 zł</div>
-           <form action="purchase.php" method="POST">
+            <form action="purchase.php" method="POST">
                 <input type="hidden" name="plan" value="Regular">
                 <button type="submit" class="buy" data-i18n="buy">Zakup</button>
             </form>
         </div>
+
+        <!-- plan premium -->
         <div class="plan-choice">
             <h2 data-i18n="premium-plan">Premium</h2>
             <span class="plan-icon star"></span>
@@ -69,6 +62,7 @@ require_once "loginconnect.php";
         </div>
     </div>
 
+    <!-- skrypt odpowiedzialny za tłumaczenia i obsługę języka -->
     <script src="scriptRL.js"></script>
 </body>
 </html>
