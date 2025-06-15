@@ -1,6 +1,5 @@
 <?php
 use PHPUnit\Framework\TestCase;
-require_once __DIR__ . '/../movie_preview.php';
 require_once __DIR__ . '/../player.php';
 class PlayerTest extends TestCase {
    private $conn;
