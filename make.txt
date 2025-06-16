@@ -1,0 +1,21 @@
+1. Otwórz wiersz poleceń (cmd).
+
+2. Przejdź do folderu projektu, a potem do podfolderu BACKEND:
+   cd ścieżka\do\projektu\BACKEND
+
+3. Upewnij się, że masz zainstalowanego Composera (https://getcomposer.org/).
+
+4. Do możliwości korzystania z biblioteki phpmyunit wykonaj:
+   composer install
+
+5. W phpMyAdmin utwórz nową bazę danych o nazwie `nowa_baza`.
+
+6. Zaimportuj strukturę i dane bazy z pliku streaming.sql:
+   "C:\xampp\mysql\bin\mysql.exe" -u root nowa_baza < "..\Baza\streaming.sql"
+
+7. Skopiuj plik konfiguracyjny środowiska:
+   copy .env.example .env
+   (i edytuj `.env`, jeśli potrzebujesz zmienić dane do bazy)
+
+8. Uruchom testy jednostkowe:
+   vendor\bin\phpunit --testdox tests

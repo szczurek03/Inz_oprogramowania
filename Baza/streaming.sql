@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Cze 14, 2025 at 01:08 PM
--- Wersja serwera: 10.4.32-MariaDB
--- Wersja PHP: 8.2.12
+-- Generation Time: Jun 15, 2025 at 08:30 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `gatunek2`
+-- Table structure for table `gatunek2`
 --
 
 CREATE TABLE `gatunek2` (
@@ -243,7 +243,7 @@ INSERT INTO `gatunek2` (`id_gatunek`, `nazwa_gatunku`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `imdb_top_1000`
+-- Table structure for table `imdb_top_1000`
 --
 
 CREATE TABLE `imdb_top_1000` (
@@ -1285,7 +1285,7 @@ INSERT INTO `imdb_top_1000` (`id_treść`, `Poster_Link`, `Series_Title`, `Relea
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `kategoria_wiekowa2`
+-- Table structure for table `kategoria_wiekowa2`
 --
 
 CREATE TABLE `kategoria_wiekowa2` (
@@ -1319,7 +1319,7 @@ INSERT INTO `kategoria_wiekowa2` (`id_kategoria_wiekowa`, `nazwa_kategorii_wieko
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `komentarze`
+-- Table structure for table `komentarze`
 --
 
 CREATE TABLE `komentarze` (
@@ -1333,7 +1333,7 @@ CREATE TABLE `komentarze` (
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `kraj2`
+-- Table structure for table `kraj2`
 --
 
 CREATE TABLE `kraj2` (
@@ -1351,7 +1351,7 @@ INSERT INTO `kraj2` (`id_kraj`, `nazwa_kraju`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `nazwa_subskrybcji`
+-- Table structure for table `nazwa_subskrybcji`
 --
 
 CREATE TABLE `nazwa_subskrybcji` (
@@ -1371,7 +1371,7 @@ INSERT INTO `nazwa_subskrybcji` (`id_nazwa_subskrybcji`, `nazwa_subskrybcji`) VA
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `ocena`
+-- Table structure for table `ocena`
 --
 
 CREATE TABLE `ocena` (
@@ -1390,7 +1390,7 @@ INSERT INTO `ocena` (`id_like`, `nazwa_oceny`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `oceny`
+-- Table structure for table `oceny`
 --
 
 CREATE TABLE `oceny` (
@@ -1415,18 +1415,19 @@ INSERT INTO `oceny` (`id_oceny`, `id_użytkownika`, `id_like`, `data_oceny`, `id
 (39, 9, 1, '2025-06-08', 466),
 (40, 9, 1, '2025-06-08', 275),
 (41, 10, 1, '2025-06-08', 10),
-(42, 10, 1, '2025-06-08', 142),
+(42, 10, 2, '2025-06-15', 142),
 (43, 10, 1, '2025-06-08', 721),
 (44, 10, 1, '2025-06-08', 172),
 (45, 10, 1, '2025-06-09', 189),
 (46, 11, 2, '2025-06-14', 7),
 (47, 11, 1, '2025-06-14', 17),
-(48, 29, 1, '2025-06-14', 17);
+(48, 29, 1, '2025-06-14', 17),
+(49, 10, 1, '2025-06-15', 826);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `playlisty`
+-- Table structure for table `playlisty`
 --
 
 CREATE TABLE `playlisty` (
@@ -1446,7 +1447,7 @@ INSERT INTO `playlisty` (`id_playlisty`, `nazwa_playlisty`, `data_utworzenia`, `
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `playlisty_treści`
+-- Table structure for table `playlisty_treści`
 --
 
 CREATE TABLE `playlisty_treści` (
@@ -1467,7 +1468,7 @@ INSERT INTO `playlisty_treści` (`id_playlisty`, `id_treść`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `prośby`
+-- Table structure for table `prośby`
 --
 
 CREATE TABLE `prośby` (
@@ -1475,13 +1476,13 @@ CREATE TABLE `prośby` (
   `id_użytkownika` int(10) NOT NULL,
   `prośba` varchar(255) NOT NULL,
   `id_status_prośby` int(10) NOT NULL,
-  `data_wysłania` int(10) NOT NULL
+  `data_wysłania` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `rekomendacje`
+-- Table structure for table `rekomendacje`
 --
 
 CREATE TABLE `rekomendacje` (
@@ -1495,16 +1496,6 @@ CREATE TABLE `rekomendacje` (
 --
 
 INSERT INTO `rekomendacje` (`id_rekomendacji`, `id_użytkownika`, `id_treść`) VALUES
-(833, 10, 819),
-(834, 10, 189),
-(835, 10, 388),
-(836, 10, 433),
-(837, 10, 947),
-(838, 10, 637),
-(839, 10, 766),
-(840, 10, 89),
-(841, 10, 389),
-(842, 10, 275),
 (953, 9, 606),
 (954, 9, 398),
 (955, 9, 275),
@@ -1520,12 +1511,22 @@ INSERT INTO `rekomendacje` (`id_rekomendacji`, `id_użytkownika`, `id_treść`) 
 (965, 29, 624),
 (966, 29, 30),
 (967, 29, 17),
-(968, 29, 646);
+(968, 29, 646),
+(989, 10, 518),
+(990, 10, 399),
+(991, 10, 440),
+(992, 10, 721),
+(993, 10, 637),
+(994, 10, 444),
+(995, 10, 918),
+(996, 10, 18),
+(997, 10, 424),
+(998, 10, 839);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `reżyser2`
+-- Table structure for table `reżyser2`
 --
 
 CREATE TABLE `reżyser2` (
@@ -2090,7 +2091,7 @@ INSERT INTO `reżyser2` (`id_reżysera`, `imie_reżysera`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `status_prośby`
+-- Table structure for table `status_prośby`
 --
 
 CREATE TABLE `status_prośby` (
@@ -2098,10 +2099,17 @@ CREATE TABLE `status_prośby` (
   `nazwa_statusu` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `status_prośby`
+--
+
+INSERT INTO `status_prośby` (`id_status_prośby`, `nazwa_statusu`) VALUES
+(1, 'Oczkujące');
+
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `subskrybcja`
+-- Table structure for table `subskrybcja`
 --
 
 CREATE TABLE `subskrybcja` (
@@ -2118,7 +2126,6 @@ CREATE TABLE `subskrybcja` (
 --
 
 INSERT INTO `subskrybcja` (`id_subskrybcji`, `id_nazwa_subskrybcji`, `data_rozpoczęcia`, `data_zakończenia`, `cena`, `aktywny`) VALUES
-(1, 1, '1000-01-01', '1000-01-01', 0, 0),
 (4, 2, '0000-00-00', '2025-07-09', 39.99, 1),
 (5, 2, '0000-00-00', '2025-07-09', 39.99, 1),
 (6, 3, '0000-00-00', '2025-07-09', 59.99, 1),
@@ -2180,12 +2187,25 @@ INSERT INTO `subskrybcja` (`id_subskrybcji`, `id_nazwa_subskrybcji`, `data_rozpo
 (62, 3, '0000-00-00', '2025-07-14', 59.99, 1),
 (63, 3, '0000-00-00', '2025-07-14', 59.99, 1),
 (64, 1, '0000-00-00', '2025-06-14', 0, 0),
-(65, 2, '0000-00-00', '2025-07-14', 39.99, 1);
+(65, 2, '0000-00-00', '2025-07-14', 39.99, 1),
+(66, 1, '0000-00-00', '2025-06-15', 0, 0),
+(67, 2, '0000-00-00', '2025-07-15', 39.99, 1),
+(68, 1, '0000-00-00', '2025-06-15', 0, 0),
+(69, 3, '0000-00-00', '2025-07-15', 59.99, 1),
+(70, 1, '0000-00-00', '2025-06-15', 0, 0),
+(71, 3, '0000-00-00', '2025-07-15', 59.99, 1),
+(72, 2, '0000-00-00', '2025-07-15', 39.99, 1),
+(73, 2, '0000-00-00', '2025-07-15', 39.99, 1),
+(74, 1, '0000-00-00', '2025-06-15', 0, 0),
+(75, 3, '0000-00-00', '2025-07-15', 59.99, 1),
+(76, 3, '0000-00-00', '2025-07-15', 59.99, 1),
+(77, 1, '0000-00-00', '2025-06-15', 0, 0),
+(78, 2, '0000-00-00', '2025-07-15', 39.99, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `treść2`
+-- Table structure for table `treść2`
 --
 
 CREATE TABLE `treść2` (
@@ -3219,7 +3239,7 @@ INSERT INTO `treść2` (`id_tresc`, `tytuł`, `opis`, `rok_wydania`, `data_dodan
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `treść_gatunek`
+-- Table structure for table `treść_gatunek`
 --
 
 CREATE TABLE `treść_gatunek` (
@@ -3244,7 +3264,7 @@ INSERT INTO `treść_gatunek` (`id_treść`, `id_gatunek`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `użytkownicy`
+-- Table structure for table `użytkownicy`
 --
 
 CREATE TABLE `użytkownicy` (
@@ -3253,86 +3273,73 @@ CREATE TABLE `użytkownicy` (
   `email` varchar(255) NOT NULL,
   `hasło_hash` varchar(255) NOT NULL,
   `id_subskrybcji` int(10) NOT NULL,
-  `data_założenia` date NOT NULL
+  `data_założenia` date NOT NULL,
+  `czy_pracownik` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `użytkownicy`
 --
 
-INSERT INTO `użytkownicy` (`id_użytkownika`, `nazwa_użytkownika`, `email`, `hasło_hash`, `id_subskrybcji`, `data_założenia`) VALUES
-(1, 'Test', 'test@gmail.pl', '$2y$10$OEEuq7i3AAmyOE63pvvPjeJA13g1cgdOTnj1R79uENjRdu5EQT4/q', 1, '2025-05-25'),
-(7, 'DupaDupa', 'dupa@wp.pl', '$2y$10$BHN9GcAawBzlovgVCjewaOH1R7kbp7DcQ4qnqcMCO.y4GHWRPWXe.', 1, '2025-06-01'),
-(8, 'szx87043', 'Matixpod@gmail.com', '$2y$10$fxTylYDTDQaFRlC1xOLaGuHrDzMBzcYooE83SuMd6hosFeQAyiZ0C', 1, '2025-06-08'),
-(9, 'kk55613', 'klaudiakrawiec2003@gmail.com', '$2y$10$Y95jx/qyiXaJxJ8LU/1TR.PIrjCjnCnH7YEeJ5L71mJJ8Sko0qBVO', 64, '2025-06-08'),
-(10, 'test1', 'test1@wp.pl', '$2y$10$r3.gFuyKSPizsquJrRzEQe/Sj0gA7lp65hORNt0eM.5BPXYdmct9O', 46, '2025-06-08'),
-(11, 'ala', 'ala@gmail.com', '$2y$10$CkjuIw4m6Ho18kgcxSntWeF/kvsjHp5YjAEeXFiqTtay5O5LXmE16', 61, '2025-06-14'),
-(26, 'test12345', 'test12345@gmail.com', '$2y$10$8Hmi39NdEhgj0ftsErIU6.TNXjXLwoIARiEg7Ow28HFgK101t0N1y', 1, '2025-06-14'),
-(29, 'test123456', 'test123456@gmail.com', '$2y$10$CyRnWe9C6fab/NpO3d8r5.JkAbzPB7P16rNCXS/xjYeZOwpSWWi4C', 65, '2025-06-14');
-
--- --------------------------------------------------------
+INSERT INTO `użytkownicy` (`id_użytkownika`, `nazwa_użytkownika`, `email`, `hasło_hash`, `id_subskrybcji`, `data_założenia`, `czy_pracownik`) VALUES
+(1, 'Test', 'test@gmail.pl', '$2y$10$OEEuq7i3AAmyOE63pvvPjeJA13g1cgdOTnj1R79uENjRdu5EQT4/q', 1, '2025-05-25', 0),
+(7, 'DupaDupa', 'dupa@wp.pl', '$2y$10$BHN9GcAawBzlovgVCjewaOH1R7kbp7DcQ4qnqcMCO.y4GHWRPWXe.', 1, '2025-06-01', 0),
+(8, 'szx87043', 'Matixpod@gmail.com', '$2y$10$fxTylYDTDQaFRlC1xOLaGuHrDzMBzcYooE83SuMd6hosFeQAyiZ0C', 1, '2025-06-08', 0),
+(9, 'kk55613', 'klaudiakrawiec2003@gmail.com', '$2y$10$Y95jx/qyiXaJxJ8LU/1TR.PIrjCjnCnH7YEeJ5L71mJJ8Sko0qBVO', 64, '2025-06-08', 0),
+(10, 'test1', 'test1@wp.pl', '$2y$10$r3.gFuyKSPizsquJrRzEQe/Sj0gA7lp65hORNt0eM.5BPXYdmct9O', 78, '2025-06-08', 1),
+(11, 'ala', 'ala@gmail.com', '$2y$10$CkjuIw4m6Ho18kgcxSntWeF/kvsjHp5YjAEeXFiqTtay5O5LXmE16', 61, '2025-06-14', 0),
+(26, 'test12345', 'test12345@gmail.com', '$2y$10$8Hmi39NdEhgj0ftsErIU6.TNXjXLwoIARiEg7Ow28HFgK101t0N1y', 1, '2025-06-14', 0),
+(29, 'test123456', 'test123456@gmail.com', '$2y$10$CyRnWe9C6fab/NpO3d8r5.JkAbzPB7P16rNCXS/xjYeZOwpSWWi4C', 65, '2025-06-14', 0);
 
 --
--- Struktura tabeli dla tabeli `użytkownicy_pracownicy`
---
-
-CREATE TABLE `użytkownicy_pracownicy` (
-  `id_użytkownika` int(10) NOT NULL,
-  `nazwa_użytkownika` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `hasło_hash` varchar(255) NOT NULL,
-  `data_założenia` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Indeksy dla zrzutów tabel
+-- Indexes for dumped tables
 --
 
 --
--- Indeksy dla tabeli `gatunek2`
+-- Indexes for table `gatunek2`
 --
 ALTER TABLE `gatunek2`
   ADD PRIMARY KEY (`id_gatunek`);
 
 --
--- Indeksy dla tabeli `imdb_top_1000`
+-- Indexes for table `imdb_top_1000`
 --
 ALTER TABLE `imdb_top_1000`
   ADD PRIMARY KEY (`id_treść`);
 
 --
--- Indeksy dla tabeli `kategoria_wiekowa2`
+-- Indexes for table `kategoria_wiekowa2`
 --
 ALTER TABLE `kategoria_wiekowa2`
   ADD PRIMARY KEY (`id_kategoria_wiekowa`);
 
 --
--- Indeksy dla tabeli `komentarze`
+-- Indexes for table `komentarze`
 --
 ALTER TABLE `komentarze`
   ADD PRIMARY KEY (`id_komentarza`),
   ADD KEY `FKKomentarze786489` (`id_użytkownika`);
 
 --
--- Indeksy dla tabeli `kraj2`
+-- Indexes for table `kraj2`
 --
 ALTER TABLE `kraj2`
   ADD PRIMARY KEY (`id_kraj`);
 
 --
--- Indeksy dla tabeli `nazwa_subskrybcji`
+-- Indexes for table `nazwa_subskrybcji`
 --
 ALTER TABLE `nazwa_subskrybcji`
   ADD PRIMARY KEY (`id_nazwa_subskrybcji`);
 
 --
--- Indeksy dla tabeli `ocena`
+-- Indexes for table `ocena`
 --
 ALTER TABLE `ocena`
   ADD PRIMARY KEY (`id_like`);
 
 --
--- Indeksy dla tabeli `oceny`
+-- Indexes for table `oceny`
 --
 ALTER TABLE `oceny`
   ADD PRIMARY KEY (`id_oceny`),
@@ -3341,21 +3348,21 @@ ALTER TABLE `oceny`
   ADD KEY `FKOceny797359` (`id_like`);
 
 --
--- Indeksy dla tabeli `playlisty`
+-- Indexes for table `playlisty`
 --
 ALTER TABLE `playlisty`
   ADD PRIMARY KEY (`id_playlisty`),
   ADD KEY `FKPlaylisty145396` (`id_użytkownika`);
 
 --
--- Indeksy dla tabeli `playlisty_treści`
+-- Indexes for table `playlisty_treści`
 --
 ALTER TABLE `playlisty_treści`
   ADD PRIMARY KEY (`id_playlisty`,`id_treść`) USING BTREE,
   ADD KEY `FKPlaylisty_104558` (`id_treść`);
 
 --
--- Indeksy dla tabeli `prośby`
+-- Indexes for table `prośby`
 --
 ALTER TABLE `prośby`
   ADD PRIMARY KEY (`id_prośby`),
@@ -3363,7 +3370,7 @@ ALTER TABLE `prośby`
   ADD KEY `FKProśby816653` (`id_status_prośby`);
 
 --
--- Indeksy dla tabeli `rekomendacje`
+-- Indexes for table `rekomendacje`
 --
 ALTER TABLE `rekomendacje`
   ADD PRIMARY KEY (`id_rekomendacji`),
@@ -3371,26 +3378,26 @@ ALTER TABLE `rekomendacje`
   ADD KEY `FKRekomendac171056` (`id_treść`);
 
 --
--- Indeksy dla tabeli `reżyser2`
+-- Indexes for table `reżyser2`
 --
 ALTER TABLE `reżyser2`
   ADD PRIMARY KEY (`id_reżysera`);
 
 --
--- Indeksy dla tabeli `status_prośby`
+-- Indexes for table `status_prośby`
 --
 ALTER TABLE `status_prośby`
   ADD PRIMARY KEY (`id_status_prośby`);
 
 --
--- Indeksy dla tabeli `subskrybcja`
+-- Indexes for table `subskrybcja`
 --
 ALTER TABLE `subskrybcja`
   ADD PRIMARY KEY (`id_subskrybcji`),
   ADD KEY `FKSubskrybcj736405` (`id_nazwa_subskrybcji`);
 
 --
--- Indeksy dla tabeli `treść2`
+-- Indexes for table `treść2`
 --
 ALTER TABLE `treść2`
   ADD PRIMARY KEY (`id_tresc`),
@@ -3400,22 +3407,16 @@ ALTER TABLE `treść2`
   ADD KEY `id_gatunek` (`id_gatunek`);
 
 --
--- Indeksy dla tabeli `treść_gatunek`
+-- Indexes for table `treść_gatunek`
 --
 ALTER TABLE `treść_gatunek`
   ADD KEY `FKTreść_gatu826010` (`id_gatunek`),
   ADD KEY `FKTreść_gatu732026` (`id_treść`);
 
 --
--- Indeksy dla tabeli `użytkownicy`
+-- Indexes for table `użytkownicy`
 --
 ALTER TABLE `użytkownicy`
-  ADD PRIMARY KEY (`id_użytkownika`);
-
---
--- Indeksy dla tabeli `użytkownicy_pracownicy`
---
-ALTER TABLE `użytkownicy_pracownicy`
   ADD PRIMARY KEY (`id_użytkownika`);
 
 --
@@ -3468,7 +3469,7 @@ ALTER TABLE `ocena`
 -- AUTO_INCREMENT for table `oceny`
 --
 ALTER TABLE `oceny`
-  MODIFY `id_oceny` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_oceny` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `playlisty`
@@ -3480,13 +3481,13 @@ ALTER TABLE `playlisty`
 -- AUTO_INCREMENT for table `prośby`
 --
 ALTER TABLE `prośby`
-  MODIFY `id_prośby` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_prośby` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `rekomendacje`
 --
 ALTER TABLE `rekomendacje`
-  MODIFY `id_rekomendacji` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=969;
+  MODIFY `id_rekomendacji` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=999;
 
 --
 -- AUTO_INCREMENT for table `reżyser2`
@@ -3498,25 +3499,19 @@ ALTER TABLE `reżyser2`
 -- AUTO_INCREMENT for table `status_prośby`
 --
 ALTER TABLE `status_prośby`
-  MODIFY `id_status_prośby` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_status_prośby` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `subskrybcja`
 --
 ALTER TABLE `subskrybcja`
-  MODIFY `id_subskrybcji` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id_subskrybcji` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `użytkownicy`
 --
 ALTER TABLE `użytkownicy`
   MODIFY `id_użytkownika` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
-
---
--- AUTO_INCREMENT for table `użytkownicy_pracownicy`
---
-ALTER TABLE `użytkownicy_pracownicy`
-  MODIFY `id_użytkownika` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
