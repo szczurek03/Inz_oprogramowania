@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #000000, #3a0ca3);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px;
+  height: 100vh;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #c678dd;
+  font-size: 14px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbar i {
+  font-size: 18px;
+}
+
+h1 {
+  font-size: 32px;
+  margin: 40px 0 10px;
+}
+
+h1 span {
+  color: #e945e9;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: #c678dd;
+  margin-bottom: 40px;
+  border-top: 2px solid #c678dd;
+  border-bottom: 2px solid #c678dd;
+  padding: 10px 0;
+  width: 100%;
+  text-align: center;
+}
+
+.plans {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+
+.plan:hover {
+  transform: scale(1.05);
+}
+
+.plan h2 {
+  font-size: 24px;
+  color: #b180ff;
+  margin-bottom: 20px;
+}
+
+.plan-icon {
+  font-size: 100px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+
+.heart::before {
+  content: '❤';
+  color: #d16fff;
+}
+
+.smile::before {
+  content: '☺';
+  color: #d16fff;
+}
+
+
+.star::before {
+  content: '★';
+  color: #d16fff;
+}
+
+.price {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #ffbaff;
+}
+
+.buy {
+  background: none;
+  border: 2px solid #d0aaff;
+  color: #d0aaff;
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.buy:hover {
+  background-color: #d0aaff;
+  color: #121212;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleSUB.css" class="css">
+    <title>Panel subskrypcji</title>
+</head>
+<body>
+      <header>
+    <div></div>
+    <div class="topbar">
+      <span>Jan Kowalski</span>
+      <i class="user-icon">👤</i>
+      <i class="settings-icon">⚙</i>
+    </div>
+  </header>
+
+  <h1>Stream<span>FliX</span></h1>
+  <div class="subtitle">Zakup subskrypcję</div>
+
+  <div class="plans">
+    <div class="plan">
+      <h2>Regular</h2>
+      <div class="plan-icon heart"></div>
+      <div class="price">39.99zł</div>
+      <button class="buy" onclick="zakup('Regular')">Zakup +</button>
+    </div>
+
+    <div class="plan">
+      <h2>Premium</h2>
+      <div class="plan-icon star"></div>
+      <div class="price">59.99zł</div>
+      <button class="buy" onclick="zakup('Premium')">Zakup +</button>
+    </div>
+  </div>
+
+  <script>
+    function zakup(plan) {
+      alert(`Wybrałeś subskrypcję: ${plan}`);
+    }
+  </script>
+</body>
+</html>

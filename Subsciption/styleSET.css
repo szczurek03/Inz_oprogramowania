@@ -1,0 +1,138 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 22px;
+  background: linear-gradient(135deg, #000000, #3a0ca3);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  max-width: 400px;
+  width: 90%;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.quality-selector select {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid #a855f7;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 22px;
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+}
+
+.quality-selector select:hover {
+  background-color: rgba(76, 29, 123, 0.8);
+}
+.form-group label {
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgba(157, 89, 189, 0.21);
+  color: white;
+}
+
+
+.styled-checkbox label {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 1rem;
+  padding: 0;
+}
+
+
+.styled-checkbox input[type="checkbox"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+
+.styled-checkbox .checkmark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #a855f7;
+  border-radius: 4px;
+  margin-right: 10px;
+  position: relative;
+  transition: all 0.2s ease;
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+}
+
+
+.styled-checkbox input[type="checkbox"]:checked + .checkmark::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  background-color: #7f00ff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #9b30ff;
+}
+
+button.save{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px;
+    box-shadow: #000000 0px 10px 20px -5px, #000000 0px 6px 6px -6px;
+}
+button.danger {
+  margin-top: 20px;
+  font-size: 22px;
+
+  font-weight: bold;
+  background-color: #ff0033;
+  box-shadow: #000000 0px 10px 20px -5px, #000000 0px 6px 6px -6px;
+}
+
+button.danger:hover {
+  background-color: #cc002a;
+}

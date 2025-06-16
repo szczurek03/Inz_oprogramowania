@@ -1,0 +1,8 @@
+INSERT INTO Użytkownicy() VALUES (
+    1,
+    'Test',
+    'test@gmail.pl',
+    ''-haslohash,
+    1,
+    CURDATE()
+);

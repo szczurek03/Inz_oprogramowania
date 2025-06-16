@@ -1,0 +1,406 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #000000, #3a0ca3);
+  color: white;
+  min-height: 100vh;
+  
+}
+
+* {
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+    font-size: 32px;
+    margin: 40px 0 10px;
+    text-align: center;
+}
+
+h1 span {
+    color: #ae37c3;
+}
+
+
+.user-info {
+  position: absolute;
+  right: 30px;
+  top: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: rgb(174, 55, 195);
+}
+
+.user-info .username {
+  color: rgb(174, 55, 195);
+}
+
+.user-info i {
+  font-size: 32px;
+}
+
+.search-section {
+  padding: 20px 40px;
+}
+
+.search-bar {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  width: 600px;
+  margin-bottom: 20px;
+}
+
+.search-bar i {
+  margin-right: 10px;
+}
+
+.search-bar input {
+  background: none;
+  border: none;
+  color: white;
+  outline: none;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.recommendation-title {
+  font-size: 35px;
+  margin-top: 10px;
+}
+
+.media-section {
+  display: flex;
+  padding: 30px 40px;
+  width: 100%;
+}
+
+.media-wrapper {
+  height: 300px;
+  width: 30%;
+  font-size: 24px;
+}
+
+.right{
+  width: 60.8%;
+  
+}
+
+.fa-arrow-right, .fa-arrow-left{
+  font-size: 45px;
+}
+
+.section-text h3 {
+  font-size: 24px;
+  color: #bd92ff;
+  margin-bottom: 5px;
+}
+
+.section-text p {
+  font-size: 15px;
+  color: #ccc;
+}
+
+.media-row {
+  align-items: flex-start;
+
+}
+
+.media-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding-inline: 0;
+  scroll-behavior: smooth;
+  position: relative;
+  
+  
+}
+
+.media-card {
+  flex: 0 0 18.4%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
+ 
+}
+
+.media-card img {
+  border-radius: 10px;
+  display: block;
+   width: 12vw;     
+  height: 18vw;
+  
+}
+
+.card-meta {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.card-meta .number {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  display: block;
+}
+
+.card-meta .title {
+  font-size: 12px;
+  margin-top: 2px;
+  color: #cccccc;
+}
+
+.more-arrow {
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  margin-left: 15px;
+  font-size: 18px;
+  color: #a855f7;
+}
+
+.logo {
+  width: 300px; 
+  height: auto;
+  margin-top: -25px;
+}
+
+button[name="refresh_recommendations"] {
+  background-color: #ae37c3;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  padding: 12px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: 'Segoe UI', sans-serif;
+
+}
+button[name="refresh_recommendations"]:hover {
+  background-color: #c759e6;
+}
+
+.back-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: linear-gradient(135deg, #a855f7, #bd92ff);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+.back-btn:hover {
+    background-color: rgb(130, 42, 145);
+}
+.back-btn i {
+    font-size: 12px;
+}
+.settings-container {
+    max-width: 800px;
+    margin: 80px auto;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+}
+.settings-container h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+.settings-container h1 span {
+    color: #ae37c3;
+}
+.subtitle {
+    font-size: 20px;
+    color: #c678dd;
+    margin-bottom: 40px;
+    border-top: 2px solid #c678dd;
+    border-bottom: 2px solid #c678dd;
+    padding: 10px 0;
+    width: calc(100vw - 8px);
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.plan {
+    background-color: #2a2a2a;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: left;
+}
+.plan-set {
+    background-color: #2a2a2a;
+    width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 30px;
+}
+.plan-choice {
+  background-color: #2a2a2a;
+    width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    background: linear-gradient(135deg, #3a0ca3, #ae37c3); 
+    box-shadow: 0 0 15px rgba(174, 55, 195, 0.5); 
+        }
+
+.plan-set p {
+    margin: 10px 0;
+    font-size: 1em;
+}
+.plan-set strong {
+    color: #fff;
+}
+.plan-set .price {
+    color: #e50914;
+    font-weight: bold;
+}
+.plan-set .status-active {
+    color: #a0ffcc;
+}
+.plan-set .status-remaining {
+    color: #aaa;
+}
+.gray-button {
+    width: 250px;
+    background-color: #4a4a4a;
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Segoe UI', sans-serif;
+    display: inline-block;
+    margin: 10px 10px;
+    text-decoration: none;
+}
+.gray-button:hover {
+    background-color: #6a6a6a;
+}
+.plans {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+.plan-benefits {
+    background: none;
+    box-shadow: none;
+    color: #fff;
+    text-align: left;
+    max-width: 300px;
+}
+.plan-benefits h2 {
+    color: #ae37c3;
+    margin-bottom: 10px;
+}
+.plan-benefits ul {
+    list-style: none;
+    padding: 0;
+}
+.plan-benefits li {
+    margin: 10px 0;
+    font-size: 1em;
+    color: #ccc;
+}
+.plan-icon {
+    font-size: 100px;
+    margin-bottom: 20px;
+}
+.plan:hover { transform: scale(1.05) }
+
+.smile::before {
+    content: '☺';
+    color: #d16fff;
+}
+.star::before {
+    content: '★';
+    color: #d16fff;
+}
+
+.price {
+      color: #ffbaff;
+      font-weight: bold;
+      font-size: 1.5em;
+      margin-bottom: 20px;
+  }
+  .buy {
+      background-color: #ae37c3;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      padding: 12px 24px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  }
+  .buy:hover {
+      background-color: #c759e6;
+}
+
+.cancel-sub {
+  width: 250px;
+    background-color:  #e50914;;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    display: inline-block;
+    font-family: 'Segoe UI', sans-serif;
+}
+.cancel-sub:hover {
+    background-color: #6e0202;
+}
+
+.error-container {
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+  }
+.error-container h1 {
+    font-size: 32px;
+    color: #c678dd;
+    margin-bottom: 20px;
+}
+.error-container p {
+    font-size: 18px;
+    color: #ccc;
+    margin-bottom: 30px;
+}

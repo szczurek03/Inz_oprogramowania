@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #000000, #3a0ca3);
+  color: white;
+  padding: 40px;
+}
+
+.panel-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+header h1 {
+  color: #a855f7;
+}
+
+.search-sort {
+  display: flex;
+  gap: 10px;
+}
+
+.search-sort input,
+.search-sort select {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  backdrop-filter: blur(6px);
+}
+
+.info-link button {
+  background-color: rgba(168, 85, 247, 0.2);
+  color: white;
+  border: 1px solid #a855f7;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.requests {
+  margin-top: 30px;
+}
+
+.request-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+  padding: 16px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.1);
+}
+
+.request-item .title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: white;
+  margin-right: 16px;
+}
+
+.request-item button.expand {
+  background-color: #a855f7;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.request-item .left-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.request-item .status {
+  font-size: 0.95rem;
+  color: #ccc;
+  text-align: right;
+}
+
